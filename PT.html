@@ -82,17 +82,35 @@ You pick up the crowbar. Unlike many of the other tools, it seems practically ne
 [[Medical Bay]]
 [[Cockpit]]
 
-</tw-passagedata><tw-passagedata pid="12" name="Dorms" tags="" position="175,1300" size="100,100">You step into the dorms. Several bunk beds used to line the sides of the walls, but all of them have now been knocked over, some stacked on top of each other. Personal effects are strewn across the floor. No one’s here. Where do you go?
+</tw-passagedata><tw-passagedata pid="12" name="Dorms" tags="" position="150,1300" size="100,100">You step into the dorms. Several bunk beds used to line the sides of the walls, but all of them have now been knocked over, some stacked on top of each other. Personal effects are strewn across the floor. No one’s here. Where do you go?
 
 You step into the dorms. Several bunk beds used to line the sides of the walls, but all of them have now been knocked over, some stacked on top of each other. Personal effects are strewn across the floor. No one’s here. Where do you go?
 
 [[Look at the personal items]]
 [[Dorm room 2]]
-[[Go back to main hall]]
-</tw-passagedata><tw-passagedata pid="13" name="Bathrooms" tags="" position="300,1300" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Green Room" tags="" position="425,1300" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="Mess Hall" tags="" position="550,1300" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Engine Room" tags="" position="675,1300" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="Cargo Bay" tags="" position="800,1300" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="Medical Bay" tags="" position="925,1300" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="Cockpit" tags="" position="1050,1300" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="Look at the personal items" tags="" position="50,1425" size="100,100">You take a look through some of the things lying around. 
+[[Go back to main hall-&gt;MainHallway]]
+</tw-passagedata><tw-passagedata pid="13" name="Bathrooms" tags="" position="600,1300" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Green Room" tags="" position="725,1300" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="Mess Hall" tags="" position="850,1300" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Engine Room" tags="" position="975,1300" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="Cargo Bay" tags="" position="1100,1300" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="Medical Bay" tags="" position="1225,1300" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="Cockpit" tags="" position="1350,1300" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="Look at the personal items" tags="" position="25,1450" size="100,100">You take a look through some of the things lying around. 
 
-(rotate:
-</tw-passagedata><tw-passagedata pid="21" name="Dorm room 2" tags="" position="175,1425" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="Go back to main hall" tags="" position="300,1425" size="100,100"></tw-passagedata></tw-storydata>
+(cycling-link: &quot;There’s scattered magazines. Sports, architecture, clothing, gardening… Nothing interesting.&quot;, &quot;A red instruction book is hanging on the wall. You try to open it, but the pages are stuck together. Forcing it just causes it to crumble. &quot;, &quot;A tv is hanging by a couple wires off the wall. Below, a DvD player and a game console sit on a shelf. Miraculously, both seem to be working, but any remotes or controllers are nowhere to be seen. &quot;, &quot;You move a piece of clothing, and a rolled up paper bag falls out. You take a look inside to find a bunch of snacks. &quot;)
+
+
+[[Return-&gt;Dorms]]</tw-passagedata><tw-passagedata pid="21" name="Dorm room 2" tags="" position="250,1450" size="100,100">Walking further into the second room, you see more beds and amenities. Nothing particular catches your eye. You call out, again, but no one answers.
+
+(if: not ($inventory contains &quot;Drill&quot;))[[Look for more personal items]]
+[[Go back to Dorm 1-&gt;Dorms]] 
+[[Go back to main hall-&gt;MainHallway]]
+</tw-passagedata><tw-passagedata pid="22" name="Look for more personal items" tags="" position="250,1600" size="100,100">You go to take a closer look around. There’s largely the same sort of things… Books, some playing cards, journals… Something catches your eye: A drill, seemingly stashed among some clothes and blankets, revealed because of the fallen bunks. 
+
+
+[[Take the Drill]] 
+[[Return-&gt;Dorm room 2]]
+</tw-passagedata><tw-passagedata pid="23" name="Take the Drill" tags="" position="125,1725" size="100,100">(set: $inventory to $inventory + (a: &quot;Drill&quot;))
+You pick up the drill. Looking closely, it’s fairly worn, with scuffed yellow detailing. There’s a peeling piece of tape stuck to it: “Engine Room”. You take it with you. 
+
+[[Return-&gt;Dorm room 2]] 
+[[Go back to Dorm 1-&gt;Dorms]]
+[[Go back to main hall-&gt;MainHallway]]
+</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
