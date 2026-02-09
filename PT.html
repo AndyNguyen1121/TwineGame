@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play PT.</tw-noscript></noscript></tw-story>
-<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="0.3" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
+<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
   display: none;
 }
 
@@ -271,7 +271,7 @@ The door crashes open, and as it does you hear the crackling and snapping of pla
 [[Cargo Bay Overgrown]]
 [[Medical Bay Overgrown]]
 [[Cockpit Overgrown]]
-</tw-passagedata><tw-passagedata pid="42" name="Dorms Overgrown" tags="" position="1850,3175" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="Green Room Overgrown" tags="" position="2450,3150" size="100,100">(if: not $metGardener)[
+</tw-passagedata><tw-passagedata pid="42" name="Dorms Overgrown" tags="" position="1925,3175" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="Green Room Overgrown" tags="" position="2450,3150" size="100,100">(if: not $metGardener)[
   (set: $metGardener to true)
   You peek inside, and see a gal in a lab coat, tending to the plants. 
   You call out, &quot;Hello?&quot;
@@ -379,9 +379,11 @@ You wait for her response.
 After a tense silence, she finally says in a small voice, “I was sure you were dead.” 
 
 [[&quot;What?&quot;]]
-</tw-passagedata><tw-passagedata pid="58" name="Pick up vial" tags="" position="2600,3450" size="100,100">You pick up the container and open it. 
+</tw-passagedata><tw-passagedata pid="58" name="Pick up vial" tags="" position="2825,4100" size="100,100">You pick up the container and open it. 
 Inside are five green pads, each with two letters engraved onto them. Almost immediately, the gardener rushes over and yanks it from your hands. Confused, you ask her what’s going on. She replies with a hmph, and goes back to tending the plants. You know that the gardener is quite shy and cautious, so perhaps this was a reasonable reaction to having someone’s belongings messed with. But you’re not going to let her go this time. You sneak behind her, snatch the container, and sprint towards the main hall and lock the door from the outside. Opening the container again, you touch one of the green pads–the one that has what appears to be your initials on it. Almost immediately, the thousand mile sprint begins again.
-</tw-passagedata><tw-passagedata pid="59" name="Continue looking around" tags="" position="2725,3450" size="100,100">You continue looking around the room.
+
+[[....-&gt;Cargo Bay 3]]
+</tw-passagedata><tw-passagedata pid="59" name="Continue looking around" tags="" position="2800,3350" size="100,100">You continue looking around the room.
 
 [[Go back to pick up container-&gt;Pick up vial]]
 [[Go back to main hall-&gt;Main Hallway Overgrown]] 
@@ -394,7 +396,34 @@ Her frown deepens.
 She refuses to look at you. She really doesn’t want to continue talking about this.
 
 [[Keep talking-&gt;Continue talking]]
-[[Leave-&gt;Green Room Overgrown]]</tw-passagedata></tw-storydata>
+[[Leave-&gt;Green Room Overgrown]]</tw-passagedata><tw-passagedata pid="61" name="Cargo Bay 3" tags="" position="2825,4225" size="100,100">You’re back again, right inside the cargo bay. Heat immediately engulfs your whole body. The door to the main hall lies flat on the ground. Where do you go?
+
+[[Dorms 3 ]]
+[[Green Room 3]]
+[[Mess Hall 3]]
+[[Engine Room 3]]
+[[Medical Bay 3]]
+[[Cockpit 3]]
+</tw-passagedata><tw-passagedata pid="62" name="Dorms 3 " tags="" position="2350,4375" size="100,100">Going back to the dorms, you see the rooms all tidy and organized, as they should have been. However, something catches your attention. A duffel bag is lying in the center of the room.
+
+[[Inspect duffel bag]]
+</tw-passagedata><tw-passagedata pid="63" name="Green Room 3" tags="" position="2875,4375" size="100,100"></tw-passagedata><tw-passagedata pid="64" name="Mess Hall 3" tags="" position="2675,4375" size="100,100"></tw-passagedata><tw-passagedata pid="65" name="Engine Room 3" tags="" position="3225,4375" size="100,100">A figure is hunched over in the engine room, snickering. You approach them.
+“Hi, hi! Well, isn&#39;t it the newbie.” It’s the engineer of the ship.
+
+[[Ask them about the fires in the main hall]]
+[[Ask them what they’re doing in the engine room]]
+</tw-passagedata><tw-passagedata pid="66" name="Medical Bay 3" tags="" position="2775,4375" size="100,100"></tw-passagedata><tw-passagedata pid="67" name="Cockpit 3" tags="" position="2975,4375" size="100,100"></tw-passagedata><tw-passagedata pid="68" name="Ask them about the fires in the main hall" tags="" position="3175,4500" size="100,100">“What fires?” Two seconds later, an ember lands on the floor, right on top of the engineer’s toolbox, causing a fire to immediately start. Both of you scream, and you desperately search for a fire extinguisher. The engineer’s doing nothing to stop the flames besides trying to step on it. You try to get it working, but for some reason, the extinguisher doesn’t want to work. You die, failing to extinguish the fire.
+
+[[Retry-&gt;Cargo Bay 3]]
+</tw-passagedata><tw-passagedata pid="69" name="Ask them what they’re doing in the engine room" tags="" position="3300,4500" size="100,100">“Oh, I’m running a routine inspection of the engine. Gotta make sure it’s running in tip-top shape! Been at it for a few hours now, cuz there’s a lot of parts to check for.” They brush off sweat from their brow, and stand up to face you. “Have you seen my drill? I swore it was just in my toolbox a few days ago, but I can’t find it anywhere now.”
+
+[[Offer help to the engineer]]
+[[Refuse to help the engineer]]
+</tw-passagedata><tw-passagedata pid="70" name="Offer help to the engineer" tags="" position="3237.5,4625" size="100,100"></tw-passagedata><tw-passagedata pid="71" name="Refuse to help the engineer" tags="" position="3362.5,4625" size="100,100"></tw-passagedata><tw-passagedata pid="72" name="Inspect duffel bag" tags="" position="2325,4500" size="100,100">The duffel bag in which the engineer put his toolbox in was open, unlike before. You know that the engineer and gardener share the same room. There’s an empty, drill-shaped slot. Seems like the drill is elsewhere.
+
+[[Go to inner dorm]]
+[[Return to main hall-&gt; Main Hallway 3]]
+</tw-passagedata><tw-passagedata pid="73" name="Go to inner dorm" tags="" position="2287.5,4625" size="100,100"></tw-passagedata><tw-passagedata pid="74" name=" Main Hallway 3" tags="" position="2475,4525" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
