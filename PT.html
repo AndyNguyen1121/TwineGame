@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play PT.</tw-noscript></noscript></tw-story>
-<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="0.3" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
+<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
   display: none;
 }
 
@@ -94,7 +94,12 @@ You pick up the crowbar. Unlike many of the other tools, it seems practically ne
 [[Look at the personal items]]
 [[Dorm room 2]]
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="13" name="Bathrooms" tags="" position="1975,1500" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Green Room" tags="" position="2150,1500" size="100,100">You step into the green room. A lush scenery awaits you. Plants on the floor, ground, and ceiling. A few dim, blue lights flicker on and off. You’re barely able to discern anything else in the room. No one’s here.
+</tw-passagedata><tw-passagedata pid="13" name="Bathrooms" tags="" position="1975,1500" size="100,100">You head into the bathroom. It’s an extended bathroom, with three showers and three sinks. There’s also a hot tub at the end. Everyone always fights over it, but when push comes to shove, the engineer always wins. You never got the chance to use it. No one’s here…why not give it a go?
+
+[[Try the hot tub]]
+[[Go back to main hall-&gt;MainHallway]]
+
+</tw-passagedata><tw-passagedata pid="14" name="Green Room" tags="" position="2150,1500" size="100,100">You step into the green room. A lush scenery awaits you. Plants on the floor, ground, and ceiling. A few dim, blue lights flicker on and off. You’re barely able to discern anything else in the room. No one’s here.
 
 [[Go back to main hall-&gt;MainHallway]]
 </tw-passagedata><tw-passagedata pid="15" name="Mess Hall" tags="" position="2325,1500" size="100,100">Mess Hall:
@@ -184,12 +189,12 @@ You push the cover off. There’s a small pistol-sized gun still covered in pack
 
 [[Pull the trigger]]
 [[Return-&gt;Portal Gun Box]]
-</tw-passagedata><tw-passagedata pid="30" name="Inspect locked box" tags="" position="3125,1875" size="100,100">You pick up the box and take a closer look at it. There’s no clear way to open it. You vaguely remember learning about these sorts of containers. 
+</tw-passagedata><tw-passagedata pid="30" name="Inspect locked box" tags="" position="3125,1925" size="100,100">You pick up the box and take a closer look at it. There’s no clear way to open it. You vaguely remember learning about these sorts of containers. 
 
 It’s not uncommon for commercial interstellar cargo transports to carry confidential materials for research or military operations. This box probably has top secret schematics. You don’t have the knowledge required to break this sort of thing open. 
 
 [[Inspect small device-&gt;Inspect small device]]
-[[Return-&gt;Inspect small device]]
+[[Return-&gt;Portal Gun Box]]
 </tw-passagedata><tw-passagedata pid="31" name="Pull the trigger" tags="" position="2950,2000" size="100,100">(set: $PortalOpen to true)
 You brace and pull the trigger. 
 
@@ -419,7 +424,10 @@ She refuses to look at you. She really doesn’t want to continue talking about 
 
 [[Go to inner dorm]]
 [[Return to main hall-&gt; Main Hallway 3]]
-</tw-passagedata><tw-passagedata pid="73" name="Go to inner dorm" tags="" position="2287.5,4625" size="100,100"></tw-passagedata><tw-passagedata pid="74" name=" Main Hallway 3" tags="" position="2475,4525" size="100,100"></tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="73" name="Go to inner dorm" tags="" position="2287.5,4625" size="100,100"></tw-passagedata><tw-passagedata pid="74" name=" Main Hallway 3" tags="" position="2475,4525" size="100,100"></tw-passagedata><tw-passagedata pid="75" name="Try the hot tub" tags="" position="1925,1625" size="100,100">You try turning on the faucet. A few droplets of water just barely make their way out, but no steady stream. Quite unfortunate for you… perhaps you’ll get the chance once everything goes back to normal.
+
+[[Go back to bathroom-&gt;Bathrooms]]
+</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
