@@ -9,36 +9,32 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play PT.</tw-noscript></noscript></tw-story>
-<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
+<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="0.3" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
   display: none;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="850,400" size="100,100">
-(if: $timesVisitedPod &lt;= 1)
-[
-Wake up…
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
+(if: $timesVisitedPod &lt;= 1)[Wake up…
 Wake up.
 You hear your heart throbbing. 
-Slowly, you open your eyes and see a gigantic red hunk of metal sliding towards you at an alarming speed. 
- ]
- (else:)
- [
- Wake up.
+Slowly, you open your eyes and see a gigantic red hunk of metal sliding towards you at an alarming speed. ]
+ (else:)[Wake up.
 A ghostly pain subsides.
-Your eyes snap open, and you see a gigantic red hunk of metal sliding towards you at an alarming speed.
- ]
-
-
+Your eyes snap open, and you see a gigantic red hunk of metal sliding towards you at an alarming speed.]
 What do you do?
+
 [[Slide under the metal plate]] 
 [[Do Nothing-&gt;Do nothing]] 
-</tw-passagedata><tw-passagedata pid="2" name="Startup" tags="startup" position="850,275" size="100,100">(set: $timesVisitedPod to 0)
+</tw-passagedata><tw-passagedata pid="2" name="Startup" tags="startup" position="2325,475" size="100,100">(set: $timesVisitedPod to 0)
 (set: $timesVisitedDockingPay to 0)
 (set: $timesVisitedMainHallway to 0)
+(set: $timesVisitedOvergrownCargoBay to 0)
+(set: $overgrownMainHallwayOpened to false)
 (set: $inventory to (a: ))
-(set: $information to (a:))</tw-passagedata><tw-passagedata pid="3" name="Slide under the metal plate" tags="" position="850,525" size="100,100">The metal hunk crashes moments later. The sound rings in your ears for a few seconds, and stops. You managed to narrowly escape the predicament.
+(set: $information to (a:))
+(set: $PortalOpen to false)</tw-passagedata><tw-passagedata pid="3" name="Slide under the metal plate" tags="" position="2325,725" size="100,100">The metal hunk crashes moments later. The sound rings in your ears for a few seconds, and stops. You managed to narrowly escape the predicament.
 
-[[Go to the docking bay-&gt;DockingBay]]</tw-passagedata><tw-passagedata pid="4" name="Do nothing" tags="" position="625,450" size="100,100">The metal hunk slides right into your body, rupturing your organs and sending them flying.
+[[Go to the docking bay-&gt;DockingBay]]</tw-passagedata><tw-passagedata pid="4" name="Do nothing" tags="" position="2150,725" size="100,100">The metal hunk slides right into your body, rupturing your organs and sending them flying.
 
-[[Wake up-&gt;EscapePod]] </tw-passagedata><tw-passagedata pid="5" name="DockingBay" tags="" position="925,675" size="100,100">(set: $timesVisitedDockingBay to $timesVisitedDockingBay + 1)
+[[Wake up-&gt;EscapePod]] </tw-passagedata><tw-passagedata pid="5" name="DockingBay" tags="" position="2400,875" size="100,100">(set: $timesVisitedDockingBay to $timesVisitedDockingBay + 1)
 
 (if: $timesVisitedDockingBay &lt;= 1)
 [
@@ -48,29 +44,29 @@ It is eerily quiet after the sound subsides. Taking a closer look at your surrou
 
 [[Take a look at the door]]
 (if: not ($inventory contains &quot;Crowbar&quot;))[[Take a look at the escape pod]]
-</tw-passagedata><tw-passagedata pid="6" name="Take a look at the door" tags="" position="800,800" size="100,100">There is a touchpad next to the handle. It’s glowing red. Perhaps there’s some way to unlock it.
+</tw-passagedata><tw-passagedata pid="6" name="Take a look at the door" tags="" position="2275,1000" size="100,100">There is a touchpad next to the handle. It’s glowing red. Perhaps there’s some way to unlock it.
 
 
 (if: $inventory contains &quot;Crowbar&quot;) [[Pry open the door with the crowbar]]
 [[Try the touchpad]]
 [[Return-&gt;DockingBay]]
-</tw-passagedata><tw-passagedata pid="7" name="Take a look at the escape pod" tags="" position="1025,800" size="100,100">You turn around and slip around the hunk of metal. Fried circuits and broken machinery lay inside. Its central control panel is flickering wildly, a deep, melted pit scarring the screen. You watch a spark fly, and it leads your eyes to a toolbox spilled out onto the floor. 
+</tw-passagedata><tw-passagedata pid="7" name="Take a look at the escape pod" tags="" position="2500,1000" size="100,100">You turn around and slip around the hunk of metal. Fried circuits and broken machinery lay inside. Its central control panel is flickering wildly, a deep, melted pit scarring the screen. You watch a spark fly, and it leads your eyes to a toolbox spilled out onto the floor. 
 
 Many of these tools seem useless at the moment, except…
 
 [[A crowbar]]
-</tw-passagedata><tw-passagedata pid="8" name="Try the touchpad" tags="" position="900,925" size="100,100">You tap the touchpad, and it responds with a message: Lockdown Engaged. Please contact an Admin for support.
+</tw-passagedata><tw-passagedata pid="8" name="Try the touchpad" tags="" position="2375,1125" size="100,100">You tap the touchpad, and it responds with a message: Lockdown Engaged. Please contact an Admin for support.
 
-[[Return-&gt;Take a look at the door]]</tw-passagedata><tw-passagedata pid="9" name="Pry open the door with the crowbar" tags="" position="700,925" size="100,100">You approach the door, wedging the crowbar into a slight gap. You break it open after some straining. As you slip through the door, you see the central hall of the ship. Debris is scattered everywhere. 
+[[Return-&gt;Take a look at the door]]</tw-passagedata><tw-passagedata pid="9" name="Pry open the door with the crowbar" tags="" position="2175,1125" size="100,100">You approach the door, wedging the crowbar into a slight gap. You break it open after some straining. As you slip through the door, you see the central hall of the ship. Debris is scattered everywhere. 
 
 Behind you, you hear a crash as the doors slam shut again. A robotic voice from the other side of the door announces, “Rapid pressure change detected. Closing emergency airlock.” 
 Doesn’t seem like you’ll be going back that way. 
 
 [[You turn around to the hallway.-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="10" name="A crowbar" tags="" position="1025,925" size="100,100">(set: $inventory to $inventory + (a: &quot;Crowbar&quot;))
+</tw-passagedata><tw-passagedata pid="10" name="A crowbar" tags="" position="2500,1125" size="100,100">(set: $inventory to $inventory + (a: &quot;Crowbar&quot;))
 You pick up the crowbar. Unlike many of the other tools, it seems practically new. 
 
-[[Return-&gt;DockingBay]]</tw-passagedata><tw-passagedata pid="11" name="MainHallway" tags="" position="675,1050" size="100,100">(set: $timesVisitedMainHallway to $timesVisitedMainHallway + 1)
+[[Return-&gt;DockingBay]]</tw-passagedata><tw-passagedata pid="11" name="MainHallway" tags="" position="2150,1250" size="100,100">(set: $timesVisitedMainHallway to $timesVisitedMainHallway + 1)
 (if: $timesVisitedMainHallway &lt;= 1) [You call out, but no one responds. A funny feeling tells you to go to the cockpit. Where do you go?]
 (else:) [You’ve returned to the main hall. Where do you go?]
 
@@ -83,62 +79,63 @@ You pick up the crowbar. Unlike many of the other tools, it seems practically ne
 [[Medical Bay]]
 [[Cockpit]]
 
-</tw-passagedata><tw-passagedata pid="12" name="Dorms" tags="" position="150,1300" size="100,100">You step into the dorms. Several bunk beds used to line the sides of the walls, but all of them have now been knocked over, some stacked on top of each other. Personal effects are strewn across the floor. No one’s here. Where do you go?
+</tw-passagedata><tw-passagedata pid="12" name="Dorms" tags="" position="1625,1500" size="100,100">You step into the dorms. Several bunk beds used to line the sides of the walls, but all of them have now been knocked over, some stacked on top of each other. Personal effects are strewn across the floor. No one’s here. Where do you go?
 
 You step into the dorms. Several bunk beds used to line the sides of the walls, but all of them have now been knocked over, some stacked on top of each other. Personal effects are strewn across the floor. No one’s here. Where do you go?
 
 [[Look at the personal items]]
 [[Dorm room 2]]
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="13" name="Bathrooms" tags="" position="500,1300" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Green Room" tags="" position="675,1300" size="100,100">You step into the green room. A lush scenery awaits you. Plants on the floor, ground, and ceiling. A few dim, blue lights flicker on and off. You’re barely able to discern anything else in the room. No one’s here.
+</tw-passagedata><tw-passagedata pid="13" name="Bathrooms" tags="" position="1975,1500" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Green Room" tags="" position="2150,1500" size="100,100">You step into the green room. A lush scenery awaits you. Plants on the floor, ground, and ceiling. A few dim, blue lights flicker on and off. You’re barely able to discern anything else in the room. No one’s here.
 
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="15" name="Mess Hall" tags="" position="850,1300" size="100,100">Mess Hall:
+</tw-passagedata><tw-passagedata pid="15" name="Mess Hall" tags="" position="2325,1500" size="100,100">Mess Hall:
 Food lies everywhere, and chairs are knocked around. The tables remain in place, but only because they’re bolted to the ground. There&#39;s a small kitchen in the back. No one’s here.
 
 [[Go to the kitchen]]
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="16" name="Engine Room" tags="" position="1175,1300" size="100,100">It’s oddly clean in the engine room. However, there is a huge, gaping crack in the engine. It appears to have been drilled into by something. No one’s here, though.
+</tw-passagedata><tw-passagedata pid="16" name="Engine Room" tags="" position="2650,1500" size="100,100">It’s oddly clean in the engine room. However, there is a huge, gaping crack in the engine. It appears to have been drilled into by something. No one’s here, though.
 
-[[Look around the room]]
 [[Inspect the engine]]
+[[Check back up generator]]
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="17" name="Cargo Bay" tags="" position="1550,1275" size="100,100">There are tons of boxes on the floor, some still sitting on top of pallets. Heavy cargo nets have kept most of the stacks from fully toppling over, but they lean dangerously to the side. You hear the strain of the nets. 
+</tw-passagedata><tw-passagedata pid="17" name="Cargo Bay" tags="" position="3025,1450" size="100,100">There are tons of boxes on the floor, some still sitting on top of pallets. Heavy cargo nets have kept most of the stacks from fully toppling over, but they lean dangerously to the side. You hear the strain of the nets. 
 
+(if: $PortalOpen and ($information contains &quot;Portal&quot;)) [[Head towards the portal-&gt;Portal On]] 
 
+(if: not $PortalOpen and ($information contains &quot;Portal&quot;)) [[Head towards the portal-&gt;Portal Close]] 
 [[Inspect the nearby boxes]]
-[[Walk further into the cargo bay]]
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="18" name="Medical Bay" tags="" position="1800,1275" size="100,100">The bay is strewn with medical tools, and the wall cabinets have all fallen over. What catches your eye is a container with the labels: “For my dear friends.” You peek inside, but it’s empty.
+-</tw-passagedata><tw-passagedata pid="18" name="Medical Bay" tags="" position="3275,1475" size="100,100">The bay is strewn with medical tools, and the wall cabinets have all fallen over. What catches your eye is a container with the labels: “For my dear friends.” You peek inside, but it’s empty.
 
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="19" name="Cockpit" tags="" position="1925,1275" size="100,100">You walk up to the cockpit, which is at the opposite end of the hallway from the escape pod. When you reach the door, there is a note on the floor. “To whom it may concern… kill whoever fucked over my ship!!”
+</tw-passagedata><tw-passagedata pid="19" name="Cockpit" tags="" position="3400,1475" size="100,100">You walk up to the cockpit, which is at the opposite end of the hallway from the escape pod. When you reach the door, there is a note on the floor. “To whom it may concern… kill whoever fucked over my ship!!”
 
 You tap the door’s touchpad, but it flashes red with a lock in response. It seems like you’ll have to find a few things before you can proceed into the cockpit.
 
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="20" name="Look at the personal items" tags="" position="25,1450" size="100,100">You take a look through some of the things lying around. 
+</tw-passagedata><tw-passagedata pid="20" name="Look at the personal items" tags="" position="1500,1650" size="100,100">You take a look through some of the things lying around. 
 
 (cycling-link: &quot;There’s scattered magazines. Sports, architecture, clothing, gardening… Nothing interesting.&quot;, &quot;A red instruction book is hanging on the wall. You try to open it, but the pages are stuck together. Forcing it just causes it to crumble. &quot;, &quot;A tv is hanging by a couple wires off the wall. Below, a DvD player and a game console sit on a shelf. Miraculously, both seem to be working, but any remotes or controllers are nowhere to be seen. &quot;, &quot;You move a piece of clothing, and a rolled up paper bag falls out. You take a look inside to find a bunch of snacks. &quot;)
 
 
-[[Return-&gt;Dorms]]</tw-passagedata><tw-passagedata pid="21" name="Dorm room 2" tags="" position="250,1450" size="100,100">Walking further into the second room, you see more beds and amenities. Nothing particular catches your eye. You call out, again, but no one answers.
+[[Return-&gt;Dorms]]</tw-passagedata><tw-passagedata pid="21" name="Dorm room 2" tags="" position="1725,1650" size="100,100">Walking further into the second room, you see more beds and amenities. Nothing particular catches your eye. You call out, again, but no one answers.
 
 (if: not ($inventory contains &quot;Drill&quot;))[[Look for more personal items]]
 [[Go back to Dorm 1-&gt;Dorms]] 
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="22" name="Look for more personal items" tags="" position="250,1600" size="100,100">You go to take a closer look around. There’s largely the same sort of things… Books, some playing cards, journals… Something catches your eye: A drill, seemingly stashed among some clothes and blankets, revealed because of the fallen bunks. 
+</tw-passagedata><tw-passagedata pid="22" name="Look for more personal items" tags="" position="1725,1800" size="100,100">You go to take a closer look around. There’s largely the same sort of things… Books, some playing cards, journals… Something catches your eye: A drill, seemingly stashed among some clothes and blankets, revealed because of the fallen bunks. 
 
 
 [[Take the Drill]] 
 [[Return-&gt;Dorm room 2]]
-</tw-passagedata><tw-passagedata pid="23" name="Take the Drill" tags="" position="125,1725" size="100,100">(set: $inventory to $inventory + (a: &quot;Drill&quot;))
+</tw-passagedata><tw-passagedata pid="23" name="Take the Drill" tags="" position="1600,1925" size="100,100">(set: $inventory to $inventory + (a: &quot;Drill&quot;))
 You pick up the drill. Looking closely, it’s fairly worn, with scuffed yellow detailing. There’s a peeling piece of tape stuck to it: “Engine Room”. You take it with you. 
 
 [[Return-&gt;Dorm room 2]] 
 [[Go back to Dorm 1-&gt;Dorms]]
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="24" name="Go to the kitchen" tags="" position="850,1425" size="100,100">You lean over the bar to look into the kitchen, and see that it’s just as much of a mess as the mess hall. Cabinet doors are flung open and cooking utensils are strewn across the floor. 
+</tw-passagedata><tw-passagedata pid="24" name="Go to the kitchen" tags="" position="2325,1625" size="100,100">You lean over the bar to look into the kitchen, and see that it’s just as much of a mess as the mess hall. Cabinet doors are flung open and cooking utensils are strewn across the floor. 
 
 You step past the door to take a closer look at the kitchen. Most of it is akin to set dressing. In the corner is a food dispenser- typical interstellar travel rations. Sometimes you’d warm up your rations on the stove, just to change things up. 
 
@@ -146,13 +143,13 @@ There’s a door to a small freezer room. Looking closer, a note is on top of th
 It reads: “The frozen food is for special occasions ONLY!!!! Stop stealing it in the middle of the night! We’re going to run out before we even hit the halfway mark. I changed the password. - Your Captain” 
 
 [[Return-&gt;Mess Hall]] 
-</tw-passagedata><tw-passagedata pid="25" name="Look around the room" tags="" position="1050,1425" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Inspect the engine" tags="" position="1175,1425" size="100,100">The engine is gated off with fencing, probably to make sure no one would get third degree burns by tripping into it. The door in the fence is ajar, the lock on the floor. 
+</tw-passagedata><tw-passagedata pid="25" name="Inspect the engine" tags="" position="2650,1625" size="100,100">The engine is gated off with fencing, probably to make sure no one would get third degree burns by tripping into it. The door in the fence is ajar, the lock on the floor. 
 
 Stepping through the door to get a closer look, the engine is dead cold. 
 
 [[Look at the crack]] 
 [[Return-&gt;Engine Room]]
-</tw-passagedata><tw-passagedata pid="27" name="Look at the crack" tags="" position="1112.5,1550" size="100,100">You take a closer look at the crack. 
+</tw-passagedata><tw-passagedata pid="26" name="Look at the crack" tags="" position="2600,1750" size="100,100">You take a closer look at the crack. 
 
 At the very top of the crack, is the remains of a small hole. The crack then spreads down from this hole through the metal, down into the core of the engine. Tracing a finger along the edges, it’s not a sharp cut- the metal is melted. 
 
@@ -161,11 +158,11 @@ There’s a difference in texture from the gash to the top though- the small hol
 (set: $information to $information (a: &quot;EngineFailure&quot;))
 [[Return-&gt;Inspect the engine]] 
 
-</tw-passagedata><tw-passagedata pid="28" name="Inspect the nearby boxes" tags="" position="1487.5,1400" size="100,100">Right next to the entrance, a stack of smaller boxes are strewn around on the floor. One catches your eye- its cover is crooked and a stretch of bubble wrap is thrown to the side. 
+</tw-passagedata><tw-passagedata pid="27" name="Inspect the nearby boxes" tags="" position="3075,1625" size="100,100">Right next to the entrance, a stack of smaller boxes are strewn around on the floor. One catches your eye- its cover is crooked and a stretch of bubble wrap is thrown to the side. 
 
 [[Inspect the box-&gt;Portal Gun Box]]
 [[Return-&gt;Cargo Bay]] 
-</tw-passagedata><tw-passagedata pid="29" name="Walk further into the cargo bay" tags="" position="1612.5,1400" size="100,100"></tw-passagedata><tw-passagedata pid="30" name="Portal Gun Box" tags="" position="1475,1525" size="100,100">The cover has a label that reads:
+</tw-passagedata><tw-passagedata pid="28" name="Portal Gun Box" tags="" position="3050,1750" size="100,100">The cover has a label that reads:
 Property of Parasol Research Laboratories.
 Experimental Portal Blaster inside. Fragile.
 A hazardous material warning accompanies it: Radioactive, explosive, toxic, gravity distortion… You don’t feel like reading the rest.
@@ -175,24 +172,100 @@ You push the cover off. There’s a small pistol-sized gun still covered in pack
 [[Inspect small device]]
 [[Inspect locked box]]
 [[Return-&gt;Inspect the nearby boxes]]
-</tw-passagedata><tw-passagedata pid="31" name="Inspect small device" tags="" position="1400,1650" size="100,100">You carefully pick up the pistol. On closer inspection, it doesn’t seem to be a gun- it has a pistol grip and a trigger, but it’s far too short to have a barrel. Instead, it has a short cylindrical device at the end. Some sort of transmitter.
+</tw-passagedata><tw-passagedata pid="29" name="Inspect small device" tags="" position="2975,1875" size="100,100">You carefully pick up the pistol. On closer inspection, it doesn’t seem to be a gun- it has a pistol grip and a trigger, but it’s far too short to have a barrel. Instead, it has a short cylindrical device at the end. Some sort of transmitter.
 
 [[Pull the trigger]]
 [[Return-&gt;Portal Gun Box]]
-</tw-passagedata><tw-passagedata pid="32" name="Inspect locked box" tags="" position="1537.5,1650" size="100,100">You pick up the box and take a closer look at it. There’s no clear way to open it. You vaguely remember learning about these sorts of containers. 
+</tw-passagedata><tw-passagedata pid="30" name="Inspect locked box" tags="" position="3125,1875" size="100,100">You pick up the box and take a closer look at it. There’s no clear way to open it. You vaguely remember learning about these sorts of containers. 
 
 It’s not uncommon for commercial interstellar cargo transports to carry confidential materials for research or military operations. This box probably has top secret schematics. You don’t have the knowledge required to break this sort of thing open. 
 
 [[Inspect small device-&gt;Inspect small device]]
 [[Return-&gt;Inspect small device]]
-</tw-passagedata><tw-passagedata pid="33" name="Pull the trigger" tags="" position="1400,1775" size="100,100">You brace and pull the trigger. 
+</tw-passagedata><tw-passagedata pid="31" name="Pull the trigger" tags="" position="2950,2000" size="100,100">(set: $PortalOpen to true)
+You brace and pull the trigger. 
 
 Click!
 
 …nothing happens. The trigger had a little bit of resistance before it gave and made a “click” noise. 
 
 You pull the trigger a few more times, but it still does nothing. You turn and aim it down the cargo bay, and click it again. 
-</tw-passagedata></tw-storydata>
+
+ [[This time, something else catches your eye.-&gt;Portal]]
+</tw-passagedata><tw-passagedata pid="32" name="Check back up generator" tags="" position="2525,1625" size="100,100">You step over to the corner of the engine room to check up on the back-up generator. 
+
+It’s still chugging along. It seems to have escaped sabotage.
+That’s good, because otherwise you’d be dead. The back-up generator is only for emergencies. Just enough energy and fuel to keep critical life systems running for a year or two at most- oxygen, food, lights, and emergency communications. The ship won’t be able to navigate just off the back-up generator. 
+
+…You should probably check that the emergency SOS is broadcasting.
+
+[[Return-&gt;Engine Room]]
+-</tw-passagedata><tw-passagedata pid="33" name="Portal" tags="" position="3000,2150" size="100,100">(set: $information to $information + (a: &quot;Portal&quot;))
+
+Further in the cargo bay, a bright light begins flickering. You walk closer to the light, curious. It turns out that the light came from a blue portal.
+
+(if: $PortalOpen is true) [[[Pull Trigger-&gt;Portal Close Alt]]]
+(else:) [[[Pull Trigger-&gt;Portal Open]]]
+
+[[Return to cargo bay-&gt;Cargo Bay]]
+</tw-passagedata><tw-passagedata pid="34" name="Portal Close" tags="" position="3325,2250" size="100,100">(set: $PortalOpen to false)
+This is where the portal was. There’s a slight shadow on the wall.
+
+[[Pull Trigger (Again)-&gt;Portal Open]]
+[[Return-&gt;Cargo Bay]]</tw-passagedata><tw-passagedata pid="35" name="Portal On" tags="" position="2675,2250" size="100,100">The portal is open, its edges blurry and shifting back and forth slightly.
+
+[[Pull Trigger (Again)-&gt;Portal Close Alt]]
+[[Touch the portal-&gt;Cargo Bay Overgrown ]]
+[[Return-&gt;Cargo Bay]]</tw-passagedata><tw-passagedata pid="36" name="Portal Open" tags="" position="3200,2400" size="100,100">(set: $PortalOpen to true)
+You click the trigger again, and a moment later the portal opens.
+
+[[Pull Trigger (Again)-&gt;Portal Close Alt]]
+[[Touch the portal-&gt;Cargo Bay Overgrown ]]
+[[Return-&gt;Cargo Bay]]</tw-passagedata><tw-passagedata pid="37" name="Cargo Bay Overgrown " tags="" position="3000,2550" size="100,100">(set: $timesVisitedOvergrownCargoBay to  $timesVisitedOvergrownCargoBay + 1)
+
+(if: $timesVisitedOvergrownCargoBay &lt;= 1)[A strange feeling envelops you as you’re brought to a stop. It’s as if you had just ran thousands of miles in the span of a second. You take a look at your surroundings. 
+You’re still in the cargo bay. The stacks of cargo are no longer teetering, now properly in their place. Greenery has seeped through the cracks of the door. ]
+(else:)[You’re back in the cargo bay. Unlike the rest of the ship, it’s mostly spared from the plants.
+Well, maybe now that you’ve opened the door, it won’t be that way for long.
+
+Where do you go?] 
+
+(if: $overgrownMainHallwayOpened is false)[[[Go out to main hallway-&gt;Main Hallway Transition]]]
+(else:)[[[Go out to main hallway-&gt;Main Hallway Overgrown]]]
+
+</tw-passagedata><tw-passagedata pid="38" name="Portal Close Alt" tags="" position="2750,2400" size="100,100">(set: $PortalOpen to false)
+You point the device at the portal and pull the trigger. 
+Click!
+The portal shudders for a moment, then swoops closed. 
+
+[[Pull trigger-&gt;Portal Open]]
+[[Return-&gt;Cargo Bay]]
+</tw-passagedata><tw-passagedata pid="39" name="Main Hallway Transition" tags="" position="3000,2675" size="100,100">You tap the door’s touchpad, and the door begins to open until it suddenly stops. You hear a mechanical squeal as it strains to open, but after a few seconds it gives up and closed again. 
+A message pops up on the touchpad: “Blockage detected. Sending repair request to technician.”
+It looks like the door’s hydraulics were broken by the roots of whatever plant lay behind it.
+
+[[Main Hallway Overgrown Transition 2]]
+</tw-passagedata><tw-passagedata pid="40" name="Main Hallway Overgrown Transition 2" tags="" position="3000,2800" size="100,100">(set: $overgrownMainHallwayOpened to true)
+Just like in the docking bay, you wedge the crowbar between the doors, and begin pulling. It’s significantly more difficult. You strain and strain against the door, just barely making progress. 
+You take a breather. After a moment, you take the crowbar back in your hands. This time, you give it a yank with everything you have. 
+
+The door crashes open, and as it does you hear the crackling and snapping of plants being ripped. You fall backwards, the crowbar falling between your feet. The door is crooked, but it&#39;s open enough for you to get out now. 
+
+[[Go out to main hall-&gt;Main Hallway Overgrown]]
+</tw-passagedata><tw-passagedata pid="41" name="Main Hallway Overgrown" tags="" position="2775,2950" size="100,100">This time, the whole ship is covered with plants. Vines, bushes, trees… the entire ship has been overrun by plants. Where do you go?
+
+[[Dorms Overgrown]]
+[[Green Room Overgrown]]
+[[Mess Hall Overgrown]]
+[[Engine Room Overgrown]]
+[[Cargo Bay Overgrown]]
+[[Medical Bay Overgrown]]
+[[Cockpit Overgrown]]
+</tw-passagedata><tw-passagedata pid="42" name="Dorms Overgrown" tags="" position="2300,3150" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="Green Room Overgrown" tags="" position="2450,3150" size="100,100">You peek inside, and see a gal in a lab coat, tending to the plants. 
+You call out, “Hello?
+
+[...]
+</tw-passagedata><tw-passagedata pid="44" name="Mess Hall Overgrown" tags="" position="2600,3150" size="100,100"></tw-passagedata><tw-passagedata pid="45" name="Engine Room Overgrown" tags="" position="2750,3150" size="100,100"></tw-passagedata><tw-passagedata pid="46" name="Cargo Bay Overgrown" tags="" position="3200,3150" size="100,100"></tw-passagedata><tw-passagedata pid="47" name="Medical Bay Overgrown" tags="" position="2900,3150" size="100,100"></tw-passagedata><tw-passagedata pid="48" name="Cockpit Overgrown" tags="" position="3050,3150" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
