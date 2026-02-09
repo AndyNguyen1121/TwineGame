@@ -11,7 +11,9 @@
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play PT.</tw-noscript></noscript></tw-story>
 <tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="0.3" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
   display: none;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
+}
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
 (if: $timesVisitedPod &lt;= 1)[Wake up…
 Wake up.
 You hear your heart throbbing. 
@@ -23,14 +25,22 @@ What do you do?
 
 [[Slide under the metal plate]] 
 [[Do Nothing-&gt;Do nothing]] 
-</tw-passagedata><tw-passagedata pid="2" name="Startup" tags="startup" position="2325,475" size="100,100">(set: $timesVisitedPod to 0)
+</tw-passagedata><tw-passagedata pid="2" name="Startup" tags="startup" position="2325,475" size="100,100">&lt;!-- Data --&gt;
+(set: $timesVisitedPod to 0)
 (set: $timesVisitedDockingPay to 0)
 (set: $timesVisitedMainHallway to 0)
 (set: $timesVisitedOvergrownCargoBay to 0)
+
+&lt;!-- Level Variables --&gt;
 (set: $overgrownMainHallwayOpened to false)
+(set: $PortalOpen to false)
+(set: $metGardener to false)
+(set: $gardenerFirstDialogue to false)
+
+&lt;!-- Lists --&gt;
 (set: $inventory to (a: ))
 (set: $information to (a:))
-(set: $PortalOpen to false)</tw-passagedata><tw-passagedata pid="3" name="Slide under the metal plate" tags="" position="2325,725" size="100,100">The metal hunk crashes moments later. The sound rings in your ears for a few seconds, and stops. You managed to narrowly escape the predicament.
+</tw-passagedata><tw-passagedata pid="3" name="Slide under the metal plate" tags="" position="2325,725" size="100,100">The metal hunk crashes moments later. The sound rings in your ears for a few seconds, and stops. You managed to narrowly escape the predicament.
 
 [[Go to the docking bay-&gt;DockingBay]]</tw-passagedata><tw-passagedata pid="4" name="Do nothing" tags="" position="2150,725" size="100,100">The metal hunk slides right into your body, rupturing your organs and sending them flying.
 
@@ -99,17 +109,17 @@ Food lies everywhere, and chairs are knocked around. The tables remain in place,
 [[Inspect the engine]]
 [[Check back up generator]]
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="17" name="Cargo Bay" tags="" position="3025,1450" size="100,100">There are tons of boxes on the floor, some still sitting on top of pallets. Heavy cargo nets have kept most of the stacks from fully toppling over, but they lean dangerously to the side. You hear the strain of the nets. 
+</tw-passagedata><tw-passagedata pid="17" name="Cargo Bay" tags="" position="3025,1475" size="100,100">There are tons of boxes on the floor, some still sitting on top of pallets. Heavy cargo nets have kept most of the stacks from fully toppling over, but they lean dangerously to the side. You hear the strain of the nets. 
 
 (if: $PortalOpen and ($information contains &quot;Portal&quot;)) [[Head towards the portal-&gt;Portal On]] 
 
 (if: not $PortalOpen and ($information contains &quot;Portal&quot;)) [[Head towards the portal-&gt;Portal Close]] 
 [[Inspect the nearby boxes]]
 [[Go back to main hall-&gt;MainHallway]]
--</tw-passagedata><tw-passagedata pid="18" name="Medical Bay" tags="" position="3275,1475" size="100,100">The bay is strewn with medical tools, and the wall cabinets have all fallen over. What catches your eye is a container with the labels: “For my dear friends.” You peek inside, but it’s empty.
+-</tw-passagedata><tw-passagedata pid="18" name="Medical Bay" tags="" position="3275,1500" size="100,100">The bay is strewn with medical tools, and the wall cabinets have all fallen over. What catches your eye is a container with the labels: “For my dear friends.” You peek inside, but it’s empty.
 
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="19" name="Cockpit" tags="" position="3400,1475" size="100,100">You walk up to the cockpit, which is at the opposite end of the hallway from the escape pod. When you reach the door, there is a note on the floor. “To whom it may concern… kill whoever fucked over my ship!!”
+</tw-passagedata><tw-passagedata pid="19" name="Cockpit" tags="" position="3400,1500" size="100,100">You walk up to the cockpit, which is at the opposite end of the hallway from the escape pod. When you reach the door, there is a note on the floor. “To whom it may concern… kill whoever fucked over my ship!!”
 
 You tap the door’s touchpad, but it flashes red with a lock in response. It seems like you’ll have to find a few things before you can proceed into the cockpit.
 
@@ -158,11 +168,11 @@ There’s a difference in texture from the gash to the top though- the small hol
 (set: $information to $information (a: &quot;EngineFailure&quot;))
 [[Return-&gt;Inspect the engine]] 
 
-</tw-passagedata><tw-passagedata pid="27" name="Inspect the nearby boxes" tags="" position="3075,1625" size="100,100">Right next to the entrance, a stack of smaller boxes are strewn around on the floor. One catches your eye- its cover is crooked and a stretch of bubble wrap is thrown to the side. 
+</tw-passagedata><tw-passagedata pid="27" name="Inspect the nearby boxes" tags="" position="3075,1650" size="100,100">Right next to the entrance, a stack of smaller boxes are strewn around on the floor. One catches your eye- its cover is crooked and a stretch of bubble wrap is thrown to the side. 
 
 [[Inspect the box-&gt;Portal Gun Box]]
 [[Return-&gt;Cargo Bay]] 
-</tw-passagedata><tw-passagedata pid="28" name="Portal Gun Box" tags="" position="3050,1750" size="100,100">The cover has a label that reads:
+</tw-passagedata><tw-passagedata pid="28" name="Portal Gun Box" tags="" position="3075,1775" size="100,100">The cover has a label that reads:
 Property of Parasol Research Laboratories.
 Experimental Portal Blaster inside. Fragile.
 A hazardous material warning accompanies it: Radioactive, explosive, toxic, gravity distortion… You don’t feel like reading the rest.
@@ -261,11 +271,130 @@ The door crashes open, and as it does you hear the crackling and snapping of pla
 [[Cargo Bay Overgrown]]
 [[Medical Bay Overgrown]]
 [[Cockpit Overgrown]]
-</tw-passagedata><tw-passagedata pid="42" name="Dorms Overgrown" tags="" position="2300,3150" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="Green Room Overgrown" tags="" position="2450,3150" size="100,100">You peek inside, and see a gal in a lab coat, tending to the plants. 
-You call out, “Hello?
+</tw-passagedata><tw-passagedata pid="42" name="Dorms Overgrown" tags="" position="1850,3175" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="Green Room Overgrown" tags="" position="2450,3150" size="100,100">(if: not $metGardener)[
+  (set: $metGardener to true)
+  You peek inside, and see a gal in a lab coat, tending to the plants. 
+  You call out, &quot;Hello?&quot;
 
-[...]
-</tw-passagedata><tw-passagedata pid="44" name="Mess Hall Overgrown" tags="" position="2600,3150" size="100,100"></tw-passagedata><tw-passagedata pid="45" name="Engine Room Overgrown" tags="" position="2750,3150" size="100,100"></tw-passagedata><tw-passagedata pid="46" name="Cargo Bay Overgrown" tags="" position="3200,3150" size="100,100"></tw-passagedata><tw-passagedata pid="47" name="Medical Bay Overgrown" tags="" position="2900,3150" size="100,100"></tw-passagedata><tw-passagedata pid="48" name="Cockpit Overgrown" tags="" position="3050,3150" size="100,100"></tw-passagedata></tw-storydata>
+    (seq-link: &quot;...&quot;, &quot;\&quot;Ah!\&quot;
+    She snaps around. She stares at you for a moment, before her expression relaxes a little. 
+    \&quot;I- I thought everyone was gone. I mean, the plants just grew so quickly and…\&quot; 
+    She trails off.
+
+    [[Ask about the overgrown plants]]
+    [[Look around the room]]
+    [[Go back to main hall-&gt;Main Hallway Overgrown]]&quot;)
+]
+ (else:)[You’re back in the green room. The gardener gives you a sidelong glance, but otherwise doesn’t stop working. 
+ 
+ 	(if: $gardenerFirstDialogue ) [ [[Talk to the gardener-&gt;Continue talking]] ](else:) [ [[Ask about the overgrown plants]] ]
+ 	[[Look around the room]]
+	[[Go back to main hall-&gt;Main Hallway Overgrown]]
+
+ ]
+ 
+ 
+
+
+</tw-passagedata><tw-passagedata pid="44" name="Mess Hall Overgrown" tags="" position="2600,3150" size="100,100"></tw-passagedata><tw-passagedata pid="45" name="Engine Room Overgrown" tags="" position="2750,3150" size="100,100"></tw-passagedata><tw-passagedata pid="46" name="Cargo Bay Overgrown" tags="" position="3200,3150" size="100,100"></tw-passagedata><tw-passagedata pid="47" name="Medical Bay Overgrown" tags="" position="2900,3150" size="100,100"></tw-passagedata><tw-passagedata pid="48" name="Cockpit Overgrown" tags="" position="3050,3150" size="100,100"></tw-passagedata><tw-passagedata pid="49" name="Ask about the overgrown plants" tags="" position="2100,3275" size="100,100">(set: $gardenerFirstDialogue to true)
+“I was wondering about… all the plants? That’s… not normal.” 
+
+“I was just- Just a little… It- Uhm…” 
+She takes a deep breath.
+“It was just a little test. I- I was testing out some ways to make the plants grow faster. For more- more food. And biodiesel. A breakthrough like that, I mean, I wouldn’t have to be here…” 
+A guilty expression flashes across her face. 
+“Sorry. I mean- you know… It’s a fine job. It’s… fine.” 
+
+[[Say you understand]] 
+[[Say that she should’ve kept it contained]]
+</tw-passagedata><tw-passagedata pid="50" name="Look around the room" tags="" position="2575,3275" size="100,100">You spot several vials on the floor. They’re all unmarked, except for one. Its label reads, “For Personal Use Only.” Its contents glow a bright blue, while a shadow dances inside of the mixture. It’s oddly unsettling.
+
+[[Pick up vial]]
+[[Continue looking around]]
+</tw-passagedata><tw-passagedata pid="51" name="Say you understand" tags="" position="2075,3475" size="100,100">“No, I get it. If I could have a better job…”
+
+Her face relaxes, “Yes! Yea. We all think about it, right?” 
+She lingers for a moment. 
+“Well… I’m... going to go back to work… Unless you had more to talk about..?” 
+
+[[Continue talking]] 
+[[Leave-&gt;Green Room Overgrown]]
+</tw-passagedata><tw-passagedata pid="52" name="Say that she should’ve kept it contained" tags="" position="2225,3425" size="100,100">“Even still, you should’ve made sure they didn’t leave the green room! Look at the mess that’s outside!”
+
+She fumbles around with the pruning shears in her hand, almost cutting herself with the blades. It’s clear that you’ve made her really, really nervous.
+“Oh, um, I’ll get it taken care of right away…”
+She shrinks back to pruning the plants.
+
+[[Continue talking]] 
+[[Leave-&gt;Main Hallway Overgrown]]
+</tw-passagedata><tw-passagedata pid="53" name="Continue talking" tags="" position="2250,3625" size="100,100">You try to think of something to say to her…
+
+[[Ask again about the plants]]
+[[Ask where the others are]]
+
+</tw-passagedata><tw-passagedata pid="54" name="Ask again about the plants" tags="" position="2525,3575" size="100,100">“So.. the plants… you said something about a test…?”
+
+“Ah yes… Um… I was trying to synthesize a mixture that could… well, grow plants faster. There’s some chemicals and procedures that already do this on planets but…” 
+Her stuttering disappears, and she begins to speak faster. You don’t really understand this technical jargon. 
+
+She notices that you’ve begun looking elsewhere. 
+“Sorry… I’m not really good at explaining this stuff.”
+
+“It’s alright. I’ll leave you be.”
+
+[[Keep talking-&gt;Continue talking]] 
+[[Leave-&gt;Green Room Overgrown]]
+</tw-passagedata><tw-passagedata pid="55" name="Ask where the others are" tags="" position="2525,3700" size="100,100">“So… where’s everyone else?” 
+
+She freezes. 
+
+She already looked uncomfortable, but now there’s tears brimming in her eyes. 
+
+“Um.. I… I think they’re…” 
+She’s getting choked up, her hands are shaking. 
+“...”
+“Dead…” She finally spits it out. She glances at you, then looks away again. 
+
+[[Ask how she knows they’re dead]] 
+[[Ask if she thought you were dead]] 
+</tw-passagedata><tw-passagedata pid="56" name="Ask how she knows they’re dead" tags="" position="2400,3875" size="100,100">“How do you know they’re all dead?” 
+
+“I tried to talk to them through the doors but…” She trails off. 
+
+“But… that doesn’t, confirm anything, right?” 
+
+“No… I-I guess you’re right.”
+She doesn’t say anything more. 
+
+[[Ask if she thought you were dead]]
+[[Keep talking-&gt;Continue talking]]
+[[Return-&gt;Green Room Overgrown]]
+</tw-passagedata><tw-passagedata pid="57" name="Ask if she thought you were dead" tags="" position="2550,3875" size="100,100">“Did you think I was dead?” 
+
+She gives you a long stare. 
+“I…” 
+
+You wait for her response.
+
+After a tense silence, she finally says in a small voice, “I was sure you were dead.” 
+
+[[&quot;What?&quot;]]
+</tw-passagedata><tw-passagedata pid="58" name="Pick up vial" tags="" position="2600,3450" size="100,100">You pick up the container and open it. 
+Inside are five green pads, each with two letters engraved onto them. Almost immediately, the gardener rushes over and yanks it from your hands. Confused, you ask her what’s going on. She replies with a hmph, and goes back to tending the plants. You know that the gardener is quite shy and cautious, so perhaps this was a reasonable reaction to having someone’s belongings messed with. But you’re not going to let her go this time. You sneak behind her, snatch the container, and sprint towards the main hall and lock the door from the outside. Opening the container again, you touch one of the green pads–the one that has what appears to be your initials on it. Almost immediately, the thousand mile sprint begins again.
+</tw-passagedata><tw-passagedata pid="59" name="Continue looking around" tags="" position="2725,3450" size="100,100">You continue looking around the room.
+
+[[Go back to pick up container-&gt;Pick up vial]]
+[[Go back to main hall-&gt;Main Hallway Overgrown]] 
+</tw-passagedata><tw-passagedata pid="60" name="&quot;What?&quot;" tags="" position="2550,4000" size="100,100">&quot;When it happened, you were doing a minor fix in the escape pod and…&quot;
+  
+Her frown deepens.
+
+&quot;It&#39;s just… completely filled with plants and… there was… so much blood…&quot;
+
+She refuses to look at you. She really doesn’t want to continue talking about this.
+
+[[Keep talking-&gt;Continue talking]]
+[[Leave-&gt;Green Room Overgrown]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
