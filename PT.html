@@ -11,7 +11,7 @@
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play PT.</tw-noscript></noscript></tw-story>
 <tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
   display: none;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="850,375" size="100,100">
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="850,400" size="100,100">
 (if: $timesVisitedPod &lt;= 1)
 [
 Wake up…
@@ -33,7 +33,8 @@ What do you do?
 </tw-passagedata><tw-passagedata pid="2" name="Startup" tags="startup" position="850,275" size="100,100">(set: $timesVisitedPod to 0)
 (set: $timesVisitedDockingPay to 0)
 (set: $timesVisitedMainHallway to 0)
-(set: $inventory to (a: ))</tw-passagedata><tw-passagedata pid="3" name="Slide under the metal plate" tags="" position="850,525" size="100,100">The metal hunk crashes moments later. The sound rings in your ears for a few seconds, and stops. You managed to narrowly escape the predicament.
+(set: $inventory to (a: ))
+(set: $information to (a:))</tw-passagedata><tw-passagedata pid="3" name="Slide under the metal plate" tags="" position="850,525" size="100,100">The metal hunk crashes moments later. The sound rings in your ears for a few seconds, and stops. You managed to narrowly escape the predicament.
 
 [[Go to the docking bay-&gt;DockingBay]]</tw-passagedata><tw-passagedata pid="4" name="Do nothing" tags="" position="625,450" size="100,100">The metal hunk slides right into your body, rupturing your organs and sending them flying.
 
@@ -89,7 +90,34 @@ You step into the dorms. Several bunk beds used to line the sides of the walls, 
 [[Look at the personal items]]
 [[Dorm room 2]]
 [[Go back to main hall-&gt;MainHallway]]
-</tw-passagedata><tw-passagedata pid="13" name="Bathrooms" tags="" position="600,1300" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Green Room" tags="" position="725,1300" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="Mess Hall" tags="" position="850,1300" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Engine Room" tags="" position="975,1300" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="Cargo Bay" tags="" position="1100,1300" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="Medical Bay" tags="" position="1225,1300" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="Cockpit" tags="" position="1350,1300" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="Look at the personal items" tags="" position="25,1450" size="100,100">You take a look through some of the things lying around. 
+</tw-passagedata><tw-passagedata pid="13" name="Bathrooms" tags="" position="500,1300" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Green Room" tags="" position="675,1300" size="100,100">You step into the green room. A lush scenery awaits you. Plants on the floor, ground, and ceiling. A few dim, blue lights flicker on and off. You’re barely able to discern anything else in the room. No one’s here.
+
+[[Go back to main hall-&gt;MainHallway]]
+</tw-passagedata><tw-passagedata pid="15" name="Mess Hall" tags="" position="850,1300" size="100,100">Mess Hall:
+Food lies everywhere, and chairs are knocked around. The tables remain in place, but only because they’re bolted to the ground. There&#39;s a small kitchen in the back. No one’s here.
+
+[[Go to the kitchen]]
+[[Go back to main hall-&gt;MainHallway]]
+</tw-passagedata><tw-passagedata pid="16" name="Engine Room" tags="" position="1175,1300" size="100,100">It’s oddly clean in the engine room. However, there is a huge, gaping crack in the engine. It appears to have been drilled into by something. No one’s here, though.
+
+[[Look around the room]]
+[[Inspect the engine]]
+[[Go back to main hall-&gt;MainHallway]]
+</tw-passagedata><tw-passagedata pid="17" name="Cargo Bay" tags="" position="1550,1275" size="100,100">There are tons of boxes on the floor, some still sitting on top of pallets. Heavy cargo nets have kept most of the stacks from fully toppling over, but they lean dangerously to the side. You hear the strain of the nets. 
+
+
+[[Inspect the nearby boxes]]
+[[Walk further into the cargo bay]]
+[[Go back to main hall-&gt;MainHallway]]
+</tw-passagedata><tw-passagedata pid="18" name="Medical Bay" tags="" position="1800,1275" size="100,100">The bay is strewn with medical tools, and the wall cabinets have all fallen over. What catches your eye is a container with the labels: “For my dear friends.” You peek inside, but it’s empty.
+
+[[Go back to main hall-&gt;MainHallway]]
+</tw-passagedata><tw-passagedata pid="19" name="Cockpit" tags="" position="1925,1275" size="100,100">You walk up to the cockpit, which is at the opposite end of the hallway from the escape pod. When you reach the door, there is a note on the floor. “To whom it may concern… kill whoever fucked over my ship!!”
+
+You tap the door’s touchpad, but it flashes red with a lock in response. It seems like you’ll have to find a few things before you can proceed into the cockpit.
+
+[[Go back to main hall-&gt;MainHallway]]
+</tw-passagedata><tw-passagedata pid="20" name="Look at the personal items" tags="" position="25,1450" size="100,100">You take a look through some of the things lying around. 
 
 (cycling-link: &quot;There’s scattered magazines. Sports, architecture, clothing, gardening… Nothing interesting.&quot;, &quot;A red instruction book is hanging on the wall. You try to open it, but the pages are stuck together. Forcing it just causes it to crumble. &quot;, &quot;A tv is hanging by a couple wires off the wall. Below, a DvD player and a game console sit on a shelf. Miraculously, both seem to be working, but any remotes or controllers are nowhere to be seen. &quot;, &quot;You move a piece of clothing, and a rolled up paper bag falls out. You take a look inside to find a bunch of snacks. &quot;)
 
@@ -110,6 +138,60 @@ You pick up the drill. Looking closely, it’s fairly worn, with scuffed yellow 
 [[Return-&gt;Dorm room 2]] 
 [[Go back to Dorm 1-&gt;Dorms]]
 [[Go back to main hall-&gt;MainHallway]]
+</tw-passagedata><tw-passagedata pid="24" name="Go to the kitchen" tags="" position="850,1425" size="100,100">You lean over the bar to look into the kitchen, and see that it’s just as much of a mess as the mess hall. Cabinet doors are flung open and cooking utensils are strewn across the floor. 
+
+You step past the door to take a closer look at the kitchen. Most of it is akin to set dressing. In the corner is a food dispenser- typical interstellar travel rations. Sometimes you’d warm up your rations on the stove, just to change things up. 
+
+There’s a door to a small freezer room. Looking closer, a note is on top of the keypad. 
+It reads: “The frozen food is for special occasions ONLY!!!! Stop stealing it in the middle of the night! We’re going to run out before we even hit the halfway mark. I changed the password. - Your Captain” 
+
+[[Return-&gt;Mess Hall]] 
+</tw-passagedata><tw-passagedata pid="25" name="Look around the room" tags="" position="1050,1425" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Inspect the engine" tags="" position="1175,1425" size="100,100">The engine is gated off with fencing, probably to make sure no one would get third degree burns by tripping into it. The door in the fence is ajar, the lock on the floor. 
+
+Stepping through the door to get a closer look, the engine is dead cold. 
+
+[[Look at the crack]] 
+[[Return-&gt;Engine Room]]
+</tw-passagedata><tw-passagedata pid="27" name="Look at the crack" tags="" position="1112.5,1550" size="100,100">You take a closer look at the crack. 
+
+At the very top of the crack, is the remains of a small hole. The crack then spreads down from this hole through the metal, down into the core of the engine. Tracing a finger along the edges, it’s not a sharp cut- the metal is melted. 
+
+There’s a difference in texture from the gash to the top though- the small hole has sharp grooves in it, only partially melted down. It seems like the engine was drilled into. 
+
+(set: $information to $information (a: &quot;EngineFailure&quot;))
+[[Return-&gt;Inspect the engine]] 
+
+</tw-passagedata><tw-passagedata pid="28" name="Inspect the nearby boxes" tags="" position="1487.5,1400" size="100,100">Right next to the entrance, a stack of smaller boxes are strewn around on the floor. One catches your eye- its cover is crooked and a stretch of bubble wrap is thrown to the side. 
+
+[[Inspect the box-&gt;Portal Gun Box]]
+[[Return-&gt;Cargo Bay]] 
+</tw-passagedata><tw-passagedata pid="29" name="Walk further into the cargo bay" tags="" position="1612.5,1400" size="100,100"></tw-passagedata><tw-passagedata pid="30" name="Portal Gun Box" tags="" position="1475,1525" size="100,100">The cover has a label that reads:
+Property of Parasol Research Laboratories.
+Experimental Portal Blaster inside. Fragile.
+A hazardous material warning accompanies it: Radioactive, explosive, toxic, gravity distortion… You don’t feel like reading the rest.
+
+You push the cover off. There’s a small pistol-sized gun still covered in packing, and a small locked container labeled “Classified Data Storage”. The larger part of the box is empty, a clear indent indicating something is missing. 
+
+[[Inspect small device]]
+[[Inspect locked box]]
+[[Return-&gt;Inspect the nearby boxes]]
+</tw-passagedata><tw-passagedata pid="31" name="Inspect small device" tags="" position="1400,1650" size="100,100">You carefully pick up the pistol. On closer inspection, it doesn’t seem to be a gun- it has a pistol grip and a trigger, but it’s far too short to have a barrel. Instead, it has a short cylindrical device at the end. Some sort of transmitter.
+
+[[Pull the trigger]]
+[[Return-&gt;Portal Gun Box]]
+</tw-passagedata><tw-passagedata pid="32" name="Inspect locked box" tags="" position="1537.5,1650" size="100,100">You pick up the box and take a closer look at it. There’s no clear way to open it. You vaguely remember learning about these sorts of containers. 
+
+It’s not uncommon for commercial interstellar cargo transports to carry confidential materials for research or military operations. This box probably has top secret schematics. You don’t have the knowledge required to break this sort of thing open. 
+
+[[Inspect small device-&gt;Inspect small device]]
+[[Return-&gt;Inspect small device]]
+</tw-passagedata><tw-passagedata pid="33" name="Pull the trigger" tags="" position="1400,1775" size="100,100">You brace and pull the trigger. 
+
+Click!
+
+…nothing happens. The trigger had a little bit of resistance before it gave and made a “click” noise. 
+
+You pull the trigger a few more times, but it still does nothing. You turn and aim it down the cargo bay, and click it again. 
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
