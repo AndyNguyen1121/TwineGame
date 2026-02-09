@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play PT.</tw-noscript></noscript></tw-story>
-<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
+<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
   display: none;
 }
 
@@ -36,6 +36,7 @@ What do you do?
 (set: $PortalOpen to false)
 (set: $metGardener to false)
 (set: $gardenerFirstDialogue to false)
+(set: $greenHouseItems to 0)
 
 &lt;!-- Lists --&gt;
 (set: $inventory to (a: ))
@@ -185,7 +186,7 @@ You push the cover off. There’s a small pistol-sized gun still covered in pack
 [[Inspect small device]]
 [[Inspect locked box]]
 [[Return-&gt;Inspect the nearby boxes]]
-</tw-passagedata><tw-passagedata pid="29" name="Inspect small device" tags="" position="2975,1875" size="100,100">You carefully pick up the pistol. On closer inspection, it doesn’t seem to be a gun- it has a pistol grip and a trigger, but it’s far too short to have a barrel. Instead, it has a short cylindrical device at the end. Some sort of transmitter.
+</tw-passagedata><tw-passagedata pid="29" name="Inspect small device" tags="" position="2975,1900" size="100,100">You carefully pick up the pistol. On closer inspection, it doesn’t seem to be a gun- it has a pistol grip and a trigger, but it’s far too short to have a barrel. Instead, it has a short cylindrical device at the end. Some sort of transmitter.
 
 [[Pull the trigger]]
 [[Return-&gt;Portal Gun Box]]
@@ -195,7 +196,7 @@ It’s not uncommon for commercial interstellar cargo transports to carry confid
 
 [[Inspect small device-&gt;Inspect small device]]
 [[Return-&gt;Portal Gun Box]]
-</tw-passagedata><tw-passagedata pid="31" name="Pull the trigger" tags="" position="2950,2000" size="100,100">(set: $PortalOpen to true)
+--</tw-passagedata><tw-passagedata pid="31" name="Pull the trigger" tags="" position="2950,2025" size="100,100">(set: $PortalOpen to true)
 You brace and pull the trigger. 
 
 Click!
@@ -283,17 +284,16 @@ The door crashes open, and as it does you hear the crackling and snapping of pla
     She trails off.
 
     [[Ask about the overgrown plants]]
-    [[Look around the room]]
+    [[Look around the room-&gt;Continue looking around]]
     [[Go back to main hall-&gt;Main Hallway Overgrown]]&quot;)
 ]
  (else:)[You’re back in the green room. The gardener gives you a sidelong glance, but otherwise doesn’t stop working. 
  
  	(if: $gardenerFirstDialogue ) [ [[Talk to the gardener-&gt;Continue talking]] ](else:) [ [[Ask about the overgrown plants]] ]
- 	[[Look around the room]]
+ 	[[Look around the room-&gt;Continue looking around]]
 	[[Go back to main hall-&gt;Main Hallway Overgrown]]
 
  ]
- 
  
 
 
@@ -308,9 +308,9 @@ A guilty expression flashes across her face.
 
 [[Say you understand]] 
 [[Say that she should’ve kept it contained]]
-</tw-passagedata><tw-passagedata pid="50" name="Look around the room" tags="" position="2575,3275" size="100,100">You spot several vials on the floor. They’re all unmarked, except for one. Its label reads, “For Personal Use Only.” Its contents glow a bright blue, while a shadow dances inside of the mixture. It’s oddly unsettling.
+</tw-passagedata><tw-passagedata pid="50" name="Look around the room" tags="" position="2650,3400" size="100,100">You spot several vials on the floor. They’re all unmarked, except for one. Its label reads, “For Personal Use Only.” Its contents glow a bright blue, while a shadow dances inside of the mixture. It’s oddly unsettling.
 
-[[Pick up vial]]
+(if: $greenHouseItems is 0) [[[Pick up vial-&gt;Pick up vial]]](else-if: $greenHouseItems is 1) [ [[Pick up container]] ]
 [[Continue looking around]]
 </tw-passagedata><tw-passagedata pid="51" name="Say you understand" tags="" position="2075,3475" size="100,100">“No, I get it. If I could have a better job…”
 
@@ -380,13 +380,15 @@ You wait for her response.
 After a tense silence, she finally says in a small voice, “I was sure you were dead.” 
 
 [[&quot;What?&quot;]]
-</tw-passagedata><tw-passagedata pid="58" name="Pick up vial" tags="" position="2825,4100" size="100,100">You pick up the container and open it. 
-Inside are five green pads, each with two letters engraved onto them. Almost immediately, the gardener rushes over and yanks it from your hands. Confused, you ask her what’s going on. She replies with a hmph, and goes back to tending the plants. You know that the gardener is quite shy and cautious, so perhaps this was a reasonable reaction to having someone’s belongings messed with. But you’re not going to let her go this time. You sneak behind her, snatch the container, and sprint towards the main hall and lock the door from the outside. Opening the container again, you touch one of the green pads–the one that has what appears to be your initials on it. Almost immediately, the thousand mile sprint begins again.
+</tw-passagedata><tw-passagedata pid="58" name="Pick up vial" tags="" position="2825,3900" size="100,100">(set: $greenHouseItems to $greenHouseItems + 1)
+You pick up the vial, and put it in one of the pockets in your jacket.
 
-[[....-&gt;Cargo Bay 3]]
-</tw-passagedata><tw-passagedata pid="59" name="Continue looking around" tags="" position="2800,3350" size="100,100">You continue looking around the room.
+[[Continue looking around]] 
+</tw-passagedata><tw-passagedata pid="59" name="Continue looking around" tags="" position="2925,3350" size="100,100">(if: $greenHouseItems is 0) [You spot several vials on the floor. They’re all unmarked, except for one. Its label reads, “For Personal Use Only.” Its contents glow a bright blue, while a shadow dances inside of the mixture. It’s oddly unsettling.]
+(else-if: $greenHouseItems is 1)[You also see a container. It’s got everyone’s names written on tape. You notice the gardener getting a little anxious. Perhaps she doesn’t want you to touch it.]
+(else-if: $greenHouseItems &gt; 2) [You continue looking around the room.]
 
-[[Go back to pick up container-&gt;Pick up vial]]
+(if: $greenHouseItems is 0) [[[Pick up vial-&gt;Pick up vial]]](else-if: $greenHouseItems is 1) [ [[Pick up container]] ]
 [[Go back to main hall-&gt;Main Hallway Overgrown]] 
 </tw-passagedata><tw-passagedata pid="60" name="&quot;What?&quot;" tags="" position="2550,4000" size="100,100">&quot;When it happened, you were doing a minor fix in the escape pod and…&quot;
   
@@ -424,9 +426,12 @@ She refuses to look at you. She really doesn’t want to continue talking about 
 
 [[Go to inner dorm]]
 [[Return to main hall-&gt; Main Hallway 3]]
-</tw-passagedata><tw-passagedata pid="73" name="Go to inner dorm" tags="" position="2287.5,4625" size="100,100"></tw-passagedata><tw-passagedata pid="74" name=" Main Hallway 3" tags="" position="2475,4525" size="100,100"></tw-passagedata><tw-passagedata pid="75" name="Try the hot tub" tags="" position="1925,1625" size="100,100">You try turning on the faucet. A few droplets of water just barely make their way out, but no steady stream. Quite unfortunate for you… perhaps you’ll get the chance once everything goes back to normal.
+</tw-passagedata><tw-passagedata pid="73" name="Go to inner dorm" tags="" position="2287.5,4625" size="100,100"></tw-passagedata><tw-passagedata pid="74" name=" Main Hallway 3" tags="" position="2675,4150" size="100,100"></tw-passagedata><tw-passagedata pid="75" name="Try the hot tub" tags="" position="1925,1625" size="100,100">You try turning on the faucet. A few droplets of water just barely make their way out, but no steady stream. Quite unfortunate for you… perhaps you’ll get the chance once everything goes back to normal.
 
 [[Go back to bathroom-&gt;Bathrooms]]
+</tw-passagedata><tw-passagedata pid="76" name="Pick up container" tags="" position="2950,4075" size="100,100">You pick up the container and open it. Inside are five green pads, each with two letters engraved onto them. Almost immediately, the gardener rushes over and yanks it from your hands. Confused, you ask her what’s going on. She replies with a hmph, and goes back to tending the plants. You know that the gardener is quite shy and cautious, so perhaps this was a reasonable reaction to having someone’s belongings messed with. But you’re not going to let her go this time. You sneak behind her, snatch the container, and sprint towards the main hall and lock the door from the outside. Opening the container again, you touch one of the green pads–the one that has what appears to be your initials on it. Almost immediately, the thousand mile sprint begins again.
+
+ [[...-&gt;Cargo Bay 3]]
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
