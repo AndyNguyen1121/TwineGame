@@ -9,11 +9,12 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play PT.</tw-noscript></noscript></tw-story>
-<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
+<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
   display: none;
 }
 
 </style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
+
 (if: $timesVisitedPod &lt;= 1)[Wake up…
 Wake up.
 You hear your heart throbbing. 
@@ -30,6 +31,8 @@ What do you do?
 (set: $timesVisitedDockingPay to 0)
 (set: $timesVisitedMainHallway to 0)
 (set: $timesVisitedOvergrownCargoBay to 0)
+(set: $timesVisitedMainHallway3 to 0)
+(set: $timesVisitedMainHallway4 to 0)
 
 &lt;!-- Level Variables --&gt;
 (set: $overgrownMainHallwayOpened to false)
@@ -37,6 +40,7 @@ What do you do?
 (set: $metGardener to false)
 (set: $gardenerFirstDialogue to false)
 (set: $greenHouseItems to 0)
+(set: $saidNothing2 to false)
 
 &lt;!-- Lists --&gt;
 (set: $inventory to (a: ))
@@ -227,13 +231,13 @@ This is where the portal was. There’s a slight shadow on the wall.
 [[Return-&gt;Cargo Bay]]</tw-passagedata><tw-passagedata pid="35" name="Portal On" tags="" position="2675,2250" size="100,100">The portal is open, its edges blurry and shifting back and forth slightly.
 
 [[Pull Trigger (Again)-&gt;Portal Close Alt]]
-[[Touch the portal-&gt;Cargo Bay Overgrown ]]
+[[Touch the portal-&gt;Cargo Bay Overgrown]]
 [[Return-&gt;Cargo Bay]]</tw-passagedata><tw-passagedata pid="36" name="Portal Open" tags="" position="3200,2400" size="100,100">(set: $PortalOpen to true)
 You click the trigger again, and a moment later the portal opens.
 
 [[Pull Trigger (Again)-&gt;Portal Close Alt]]
-[[Touch the portal-&gt;Cargo Bay Overgrown ]]
-[[Return-&gt;Cargo Bay]]</tw-passagedata><tw-passagedata pid="37" name="Cargo Bay Overgrown " tags="" position="3000,2550" size="100,100">(set: $timesVisitedOvergrownCargoBay to  $timesVisitedOvergrownCargoBay + 1)
+[[Touch the portal-&gt;Cargo Bay Overgrown]]
+[[Return-&gt;Cargo Bay]]</tw-passagedata><tw-passagedata pid="37" name="Cargo Bay Overgrown" tags="" position="3000,2550" size="100,100">(set: $timesVisitedOvergrownCargoBay to  $timesVisitedOvergrownCargoBay + 1)
 
 (if: $timesVisitedOvergrownCargoBay &lt;= 1)[A strange feeling envelops you as you’re brought to a stop. It’s as if you had just ran thousands of miles in the span of a second. You take a look at your surroundings. 
 You’re still in the cargo bay. The stacks of cargo are no longer teetering, now properly in their place. Greenery has seeped through the cracks of the door. ]
@@ -264,16 +268,19 @@ You take a breather. After a moment, you take the crowbar back in your hands. Th
 The door crashes open, and as it does you hear the crackling and snapping of plants being ripped. You fall backwards, the crowbar falling between your feet. The door is crooked, but it&#39;s open enough for you to get out now. 
 
 [[Go out to main hall-&gt;Main Hallway Overgrown]]
-</tw-passagedata><tw-passagedata pid="41" name="Main Hallway Overgrown" tags="" position="2775,2950" size="100,100">This time, the whole ship is covered with plants. Vines, bushes, trees… the entire ship has been overrun by plants. Where do you go?
+</tw-passagedata><tw-passagedata pid="41" name="Main Hallway Overgrown" tags="" position="2650,2925" size="100,100">This time, the whole ship is covered with plants. Vines, bushes, trees… the entire ship has been overrun by plants. Where do you go?
 
-[[Dorms Overgrown]]
-[[Green Room Overgrown]]
-[[Mess Hall Overgrown]]
-[[Engine Room Overgrown]]
-[[Cargo Bay Overgrown]]
-[[Medical Bay Overgrown]]
-[[Cockpit Overgrown]]
-</tw-passagedata><tw-passagedata pid="42" name="Dorms Overgrown" tags="" position="1925,3175" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="Green Room Overgrown" tags="" position="2450,3150" size="100,100">(if: not $metGardener)[
+[[Dorms-&gt;Dorms Overgrown]]
+[[Green Room-&gt;Green Room Overgrown]]
+[[Mess Hall-&gt;Mess Hall Overgrown]]
+[[Engine Room-&gt;Engine Room Overgrown]]
+[[Cargo Bay-&gt;Cargo Bay Overgrown]] 
+[[Medical Bay-&gt;Medical Bay Overgrown]]
+[[Cockpit-&gt;Cockpit Overgrown]]
+[[Escape Pod-&gt;Escape Pod Overgrown]]</tw-passagedata><tw-passagedata pid="42" name="Dorms Overgrown" tags="" position="2150,3100" size="100,100">You approach the Dorms. Trying to tap the touchpad, it strains just like the cargo bay door. You can tell from the windows and the small crack of the door that can open, that the room is completely packed with plants.
+
+[[You decide it’s not worth it.-&gt;Main Hallway Overgrown]]
+</tw-passagedata><tw-passagedata pid="43" name="Green Room Overgrown" tags="" position="2450,3100" size="100,100">(if: not $metGardener)[
   (set: $metGardener to true)
   You peek inside, and see a gal in a lab coat, tending to the plants. 
   You call out, &quot;Hello?&quot;
@@ -297,7 +304,11 @@ The door crashes open, and as it does you hear the crackling and snapping of pla
  
 
 
-</tw-passagedata><tw-passagedata pid="44" name="Mess Hall Overgrown" tags="" position="2600,3150" size="100,100"></tw-passagedata><tw-passagedata pid="45" name="Engine Room Overgrown" tags="" position="2750,3150" size="100,100"></tw-passagedata><tw-passagedata pid="46" name="Cargo Bay Overgrown" tags="" position="3200,3150" size="100,100"></tw-passagedata><tw-passagedata pid="47" name="Medical Bay Overgrown" tags="" position="2900,3150" size="100,100"></tw-passagedata><tw-passagedata pid="48" name="Cockpit Overgrown" tags="" position="3050,3150" size="100,100"></tw-passagedata><tw-passagedata pid="49" name="Ask about the overgrown plants" tags="" position="2100,3275" size="100,100">(set: $gardenerFirstDialogue to true)
+</tw-passagedata><tw-passagedata pid="44" name="Mess Hall Overgrown" tags="" position="2600,3100" size="100,100">You approach the Mess Hall. Trying to tap the touchpad, it strains just like the cargo bay door. You can tell from the windows and the small crack of the door that can open, that the room is completely packed with plants.
+
+[[You decide it’s not worth it.-&gt;Main Hallway Overgrown]]</tw-passagedata><tw-passagedata pid="45" name="Medical Bay Overgrown" tags="" position="2900,3100" size="100,100">You approach the Medical Bay. Trying to tap the touchpad, it strains just like the cargo bay door. You can tell from the windows and the small crack of the door that can open, that the room is completely packed with plants.
+
+[[You decide it’s not worth it.-&gt;Main Hallway Overgrown]]</tw-passagedata><tw-passagedata pid="46" name="Ask about the overgrown plants" tags="" position="2100,3275" size="100,100">(set: $gardenerFirstDialogue to true)
 “I was wondering about… all the plants? That’s… not normal.” 
 
 “I was just- Just a little… It- Uhm…” 
@@ -308,11 +319,11 @@ A guilty expression flashes across her face.
 
 [[Say you understand]] 
 [[Say that she should’ve kept it contained]]
-</tw-passagedata><tw-passagedata pid="50" name="Look around the room" tags="" position="2650,3400" size="100,100">You spot several vials on the floor. They’re all unmarked, except for one. Its label reads, “For Personal Use Only.” Its contents glow a bright blue, while a shadow dances inside of the mixture. It’s oddly unsettling.
+</tw-passagedata><tw-passagedata pid="47" name="Look around the room" tags="" position="2650,3400" size="100,100">You spot several vials on the floor. They’re all unmarked, except for one. Its label reads, “For Personal Use Only.” Its contents glow a bright blue, while a shadow dances inside of the mixture. It’s oddly unsettling.
 
 (if: $greenHouseItems is 0) [[[Pick up vial-&gt;Pick up vial]]](else-if: $greenHouseItems is 1) [ [[Pick up container]] ]
 [[Continue looking around]]
-</tw-passagedata><tw-passagedata pid="51" name="Say you understand" tags="" position="2075,3475" size="100,100">“No, I get it. If I could have a better job…”
+</tw-passagedata><tw-passagedata pid="48" name="Say you understand" tags="" position="2075,3475" size="100,100">“No, I get it. If I could have a better job…”
 
 Her face relaxes, “Yes! Yea. We all think about it, right?” 
 She lingers for a moment. 
@@ -320,7 +331,7 @@ She lingers for a moment.
 
 [[Continue talking]] 
 [[Leave-&gt;Green Room Overgrown]]
-</tw-passagedata><tw-passagedata pid="52" name="Say that she should’ve kept it contained" tags="" position="2225,3425" size="100,100">“Even still, you should’ve made sure they didn’t leave the green room! Look at the mess that’s outside!”
+</tw-passagedata><tw-passagedata pid="49" name="Say that she should’ve kept it contained" tags="" position="2225,3425" size="100,100">“Even still, you should’ve made sure they didn’t leave the green room! Look at the mess that’s outside!”
 
 She fumbles around with the pruning shears in her hand, almost cutting herself with the blades. It’s clear that you’ve made her really, really nervous.
 “Oh, um, I’ll get it taken care of right away…”
@@ -328,12 +339,12 @@ She shrinks back to pruning the plants.
 
 [[Continue talking]] 
 [[Leave-&gt;Main Hallway Overgrown]]
-</tw-passagedata><tw-passagedata pid="53" name="Continue talking" tags="" position="2250,3625" size="100,100">You try to think of something to say to her…
+</tw-passagedata><tw-passagedata pid="50" name="Continue talking" tags="" position="2250,3625" size="100,100">You try to think of something to say to her…
 
 [[Ask again about the plants]]
 [[Ask where the others are]]
 
-</tw-passagedata><tw-passagedata pid="54" name="Ask again about the plants" tags="" position="2525,3575" size="100,100">“So.. the plants… you said something about a test…?”
+</tw-passagedata><tw-passagedata pid="51" name="Ask again about the plants" tags="" position="2525,3575" size="100,100">“So.. the plants… you said something about a test…?”
 
 “Ah yes… Um… I was trying to synthesize a mixture that could… well, grow plants faster. There’s some chemicals and procedures that already do this on planets but…” 
 Her stuttering disappears, and she begins to speak faster. You don’t really understand this technical jargon. 
@@ -345,7 +356,7 @@ She notices that you’ve begun looking elsewhere.
 
 [[Keep talking-&gt;Continue talking]] 
 [[Leave-&gt;Green Room Overgrown]]
-</tw-passagedata><tw-passagedata pid="55" name="Ask where the others are" tags="" position="2525,3700" size="100,100">“So… where’s everyone else?” 
+</tw-passagedata><tw-passagedata pid="52" name="Ask where the others are" tags="" position="2525,3700" size="100,100">“So… where’s everyone else?” 
 
 She freezes. 
 
@@ -358,7 +369,7 @@ She’s getting choked up, her hands are shaking.
 
 [[Ask how she knows they’re dead]] 
 [[Ask if she thought you were dead]] 
-</tw-passagedata><tw-passagedata pid="56" name="Ask how she knows they’re dead" tags="" position="2400,3875" size="100,100">“How do you know they’re all dead?” 
+</tw-passagedata><tw-passagedata pid="53" name="Ask how she knows they’re dead" tags="" position="2400,3875" size="100,100">“How do you know they’re all dead?” 
 
 “I tried to talk to them through the doors but…” She trails off. 
 
@@ -370,7 +381,7 @@ She doesn’t say anything more.
 [[Ask if she thought you were dead]]
 [[Keep talking-&gt;Continue talking]]
 [[Return-&gt;Green Room Overgrown]]
-</tw-passagedata><tw-passagedata pid="57" name="Ask if she thought you were dead" tags="" position="2550,3875" size="100,100">“Did you think I was dead?” 
+</tw-passagedata><tw-passagedata pid="54" name="Ask if she thought you were dead" tags="" position="2550,3875" size="100,100">“Did you think I was dead?” 
 
 She gives you a long stare. 
 “I…” 
@@ -380,17 +391,17 @@ You wait for her response.
 After a tense silence, she finally says in a small voice, “I was sure you were dead.” 
 
 [[&quot;What?&quot;]]
-</tw-passagedata><tw-passagedata pid="58" name="Pick up vial" tags="" position="2825,3900" size="100,100">(set: $greenHouseItems to $greenHouseItems + 1)
+</tw-passagedata><tw-passagedata pid="55" name="Pick up vial" tags="" position="2825,3900" size="100,100">(set: $greenHouseItems to $greenHouseItems + 1)
 You pick up the vial, and put it in one of the pockets in your jacket.
 
 [[Continue looking around]] 
-</tw-passagedata><tw-passagedata pid="59" name="Continue looking around" tags="" position="2925,3350" size="100,100">(if: $greenHouseItems is 0) [You spot several vials on the floor. They’re all unmarked, except for one. Its label reads, “For Personal Use Only.” Its contents glow a bright blue, while a shadow dances inside of the mixture. It’s oddly unsettling.]
+</tw-passagedata><tw-passagedata pid="56" name="Continue looking around" tags="" position="2925,3350" size="100,100">(if: $greenHouseItems is 0) [You spot several vials on the floor. They’re all unmarked, except for one. Its label reads, “For Personal Use Only.” Its contents glow a bright blue, while a shadow dances inside of the mixture. It’s oddly unsettling.]
 (else-if: $greenHouseItems is 1)[You also see a container. It’s got everyone’s names written on tape. You notice the gardener getting a little anxious. Perhaps she doesn’t want you to touch it.]
 (else-if: $greenHouseItems &gt; 2) [You continue looking around the room.]
 
 (if: $greenHouseItems is 0) [[[Pick up vial-&gt;Pick up vial]]](else-if: $greenHouseItems is 1) [ [[Pick up container]] ]
 [[Go back to main hall-&gt;Main Hallway Overgrown]] 
-</tw-passagedata><tw-passagedata pid="60" name="&quot;What?&quot;" tags="" position="2550,4000" size="100,100">&quot;When it happened, you were doing a minor fix in the escape pod and…&quot;
+</tw-passagedata><tw-passagedata pid="57" name="&quot;What?&quot;" tags="" position="2550,4000" size="100,100">&quot;When it happened, you were doing a minor fix in the escape pod and…&quot;
   
 Her frown deepens.
 
@@ -399,39 +410,291 @@ Her frown deepens.
 She refuses to look at you. She really doesn’t want to continue talking about this.
 
 [[Keep talking-&gt;Continue talking]]
-[[Leave-&gt;Green Room Overgrown]]</tw-passagedata><tw-passagedata pid="61" name="Cargo Bay 3" tags="" position="2825,4225" size="100,100">You’re back again, right inside the cargo bay. Heat immediately engulfs your whole body. The door to the main hall lies flat on the ground. Where do you go?
+[[Leave-&gt;Green Room Overgrown]]</tw-passagedata><tw-passagedata pid="58" name="Main Hallway 3" tags="" position="2825,4225" size="100,100">(set: $timesVisitedMainHallway3 to $timesVisitedMainHallway3 + 1)
+(if: $inventory contains &quot;DuffelBag&quot;)[The engineer is standing in the hall. They’re not too happy that you have their duffel bag, but they manage to contain themselves. 
+“I brought your bag. It’s missing the drill as well.”
+They ruffle through the bag, and sure enough, no drill.
+Sighing, they ask you, “can you look at the other rooms? I’ll keep working on getting the fire suppression system working.”
+]
+(else-if: $timesVisitedMainHallway3 &lt;= 1)[You’re back again, right inside the cargo bay. Heat immediately engulfs your whole body. The door to the main hall lies flat on the ground. You step out of the bay and enter the main hall. Where do you go?] (else: )[You’re in the main hall again. Where do you go?]
 
-[[Dorms 3 ]]
-[[Green Room 3]]
-[[Mess Hall 3]]
-[[Engine Room 3]]
-[[Medical Bay 3]]
-[[Cockpit 3]]
-</tw-passagedata><tw-passagedata pid="62" name="Dorms 3 " tags="" position="2350,4375" size="100,100">Going back to the dorms, you see the rooms all tidy and organized, as they should have been. However, something catches your attention. A duffel bag is lying in the center of the room.
+(if: not ($inventory contains &quot;DuffelBag&quot;))[[Dorms-&gt;Dorms 3]]
+[[Green Room-&gt;Green Room 3]]
+[[Mess Hall-&gt;Mess Hall 3]]
+[[Engine Room-&gt;Engine Room 3]]
+[[Medical Bay-&gt;Medical Bay 3]]
+[[Cockpit-&gt;Cockpit 3]] 
+</tw-passagedata><tw-passagedata pid="59" name="Dorms 3" tags="" position="2350,4400" size="100,100">Going back to the dorms, you see the rooms all tidy and organized, as they should have been. However, something catches your attention. A duffel bag is lying in the center of the room.
 
 [[Inspect duffel bag]]
-</tw-passagedata><tw-passagedata pid="63" name="Green Room 3" tags="" position="2875,4375" size="100,100"></tw-passagedata><tw-passagedata pid="64" name="Mess Hall 3" tags="" position="2675,4375" size="100,100"></tw-passagedata><tw-passagedata pid="65" name="Engine Room 3" tags="" position="3225,4375" size="100,100">A figure is hunched over in the engine room, snickering. You approach them.
+</tw-passagedata><tw-passagedata pid="60" name="Green Room 3" tags="" position="2875,4375" size="100,100">You decide to go to the green room. Somehow, the most flammable room hasn’t caught fire yet. Might be due to the moisture.
+
+(if: $inventory contains &quot;DuffelBag&quot;)[[Investigate room]]
+[[Return-&gt;Main Hallway 3]]
+</tw-passagedata><tw-passagedata pid="61" name="Mess Hall 3" tags="" position="2675,4375" size="100,100">You approach the door for the Mess Hall, but you see flames through the windows of the door. It’s best if you don’t open this.
+
+[[Return-&gt;Main Hallway 3]]
+</tw-passagedata><tw-passagedata pid="62" name="Engine Room 3" tags="" position="3225,4375" size="100,100">A figure is hunched over in the engine room, snickering. You approach them.
 “Hi, hi! Well, isn&#39;t it the newbie.” It’s the engineer of the ship.
 
 [[Ask them about the fires in the main hall]]
 [[Ask them what they’re doing in the engine room]]
-</tw-passagedata><tw-passagedata pid="66" name="Medical Bay 3" tags="" position="2775,4375" size="100,100"></tw-passagedata><tw-passagedata pid="67" name="Cockpit 3" tags="" position="2975,4375" size="100,100"></tw-passagedata><tw-passagedata pid="68" name="Ask them about the fires in the main hall" tags="" position="3175,4500" size="100,100">“What fires?” Two seconds later, an ember lands on the floor, right on top of the engineer’s toolbox, causing a fire to immediately start. Both of you scream, and you desperately search for a fire extinguisher. The engineer’s doing nothing to stop the flames besides trying to step on it. You try to get it working, but for some reason, the extinguisher doesn’t want to work. You die, failing to extinguish the fire.
+</tw-passagedata><tw-passagedata pid="63" name="Medical Bay 3" tags="" position="2775,4375" size="100,100">You approach the door for the Medical Bay, but you see flames through the windows of the door. It’s best if you don’t open this.
 
-[[Retry-&gt;Cargo Bay 3]]
-</tw-passagedata><tw-passagedata pid="69" name="Ask them what they’re doing in the engine room" tags="" position="3300,4500" size="100,100">“Oh, I’m running a routine inspection of the engine. Gotta make sure it’s running in tip-top shape! Been at it for a few hours now, cuz there’s a lot of parts to check for.” They brush off sweat from their brow, and stand up to face you. “Have you seen my drill? I swore it was just in my toolbox a few days ago, but I can’t find it anywhere now.”
+[[Return-&gt;Main Hallway 3]]
+</tw-passagedata><tw-passagedata pid="64" name="Cockpit 3" tags="" position="2975,4375" size="100,100">The cockpit is locked.
+
+[[Return to main hall-&gt;Main Hallway 3]]</tw-passagedata><tw-passagedata pid="65" name="Ask them about the fires in the main hall" tags="" position="3175,4500" size="100,100">“What fires?” Two seconds later, an ember lands on the floor, right on top of the engineer’s toolbox, causing a fire to immediately start. Both of you scream, and you desperately search for a fire extinguisher. The engineer’s doing nothing to stop the flames besides trying to step on it. You try to get it working, but for some reason, the extinguisher doesn’t want to work. You die, failing to extinguish the fire.
+
+[[Retry-&gt;Main Hallway 3]]
+</tw-passagedata><tw-passagedata pid="66" name="Ask them what they’re doing in the engine room" tags="" position="3300,4500" size="100,100">“Oh, I’m running a routine inspection of the engine. Gotta make sure it’s running in tip-top shape! Been at it for a few hours now, cuz there’s a lot of parts to check for.” They brush off sweat from their brow, and stand up to face you. “Have you seen my drill? I swore it was just in my toolbox a few days ago, but I can’t find it anywhere now.”
 
 [[Offer help to the engineer]]
 [[Refuse to help the engineer]]
-</tw-passagedata><tw-passagedata pid="70" name="Offer help to the engineer" tags="" position="3237.5,4625" size="100,100"></tw-passagedata><tw-passagedata pid="71" name="Refuse to help the engineer" tags="" position="3362.5,4625" size="100,100"></tw-passagedata><tw-passagedata pid="72" name="Inspect duffel bag" tags="" position="2325,4500" size="100,100">The duffel bag in which the engineer put his toolbox in was open, unlike before. You know that the engineer and gardener share the same room. There’s an empty, drill-shaped slot. Seems like the drill is elsewhere.
+</tw-passagedata><tw-passagedata pid="67" name="Offer help to the engineer" tags="" position="3225,4625" size="100,100">“Thanks.” They ask you to find their duffel bag, which they believe the drill should’ve been returned to. You feel prompted to tell them about the fires outside.
+“Not sure if you know or felt something was up, but there are fires spreading in the ship right now.”
+“Yeah, I know already. The fire suppression system was supposed to have activated already, but it’s malfunctioning. I’ll check it out.”
 
-[[Go to inner dorm]]
-[[Return to main hall-&gt; Main Hallway 3]]
-</tw-passagedata><tw-passagedata pid="73" name="Go to inner dorm" tags="" position="2287.5,4625" size="100,100"></tw-passagedata><tw-passagedata pid="74" name=" Main Hallway 3" tags="" position="2675,4150" size="100,100"></tw-passagedata><tw-passagedata pid="75" name="Try the hot tub" tags="" position="1925,1625" size="100,100">You try turning on the faucet. A few droplets of water just barely make their way out, but no steady stream. Quite unfortunate for you… perhaps you’ll get the chance once everything goes back to normal.
+Going to the dorms, you see the rooms all tidy and organized, as they should have been. Fortunately, the dorms haven’t caught on fire yet. However, something catches your attention. A duffel bag is lying in the corner of the room.
+
+[[Inspect duffel bag]]
+</tw-passagedata><tw-passagedata pid="68" name="Refuse to help the engineer" tags="" position="3362.5,4625" size="100,100">They give you a long stare, and go back to taking apart panels and screws.
+
+	[[Offer help to the engineer]]
+	[[Return to main hall-&gt;Main Hallway 3]]
+</tw-passagedata><tw-passagedata pid="69" name="Inspect duffel bag" tags="" position="2300,4550" size="100,100">The duffel bag in which the engineer put their toolbox in was open, unlike before. You know that the engineer and gardener share the same room. There’s an empty, drill-shaped slot.
+
+(if: not ($inventory contains &quot;DuffelBag&quot;))[[Take duffel bag]] 
+[[Go to second dorm room]]
+[[Return to main hall-&gt;Main Hallway 3]]
+</tw-passagedata><tw-passagedata pid="70" name="Try the hot tub" tags="" position="1925,1625" size="100,100">You try turning on the faucet. A few droplets of water just barely make their way out, but no steady stream. Quite unfortunate for you… perhaps you’ll get the chance once everything goes back to normal.
 
 [[Go back to bathroom-&gt;Bathrooms]]
-</tw-passagedata><tw-passagedata pid="76" name="Pick up container" tags="" position="2950,4075" size="100,100">You pick up the container and open it. Inside are five green pads, each with two letters engraved onto them. Almost immediately, the gardener rushes over and yanks it from your hands. Confused, you ask her what’s going on. She replies with a hmph, and goes back to tending the plants. You know that the gardener is quite shy and cautious, so perhaps this was a reasonable reaction to having someone’s belongings messed with. But you’re not going to let her go this time. You sneak behind her, snatch the container, and sprint towards the main hall and lock the door from the outside. Opening the container again, you touch one of the green pads–the one that has what appears to be your initials on it. Almost immediately, the thousand mile sprint begins again.
+</tw-passagedata><tw-passagedata pid="71" name="Pick up container" tags="" position="2950,4075" size="100,100">You pick up the container and open it. Inside are five green pads, each with two letters engraved onto them. Almost immediately, the gardener rushes over and yanks it from your hands. Confused, you ask her what’s going on. She replies with a hmph, and goes back to tending the plants. You know that the gardener is quite shy and cautious, so perhaps this was a reasonable reaction to having someone’s belongings messed with. But you’re not going to let her go this time. You sneak behind her, snatch the container, and sprint towards the main hall and lock the door from the outside. Opening the container again, you touch one of the green pads–the one that has what appears to be your initials on it. Almost immediately, the thousand mile sprint begins again.
 
- [[...-&gt;Cargo Bay 3]]
+ [[...-&gt;Main Hallway 3]]
+</tw-passagedata><tw-passagedata pid="72" name="Escape Pod Overgrown" tags="" position="3200,3100" size="100,100">You approach the Escape Pod. From a pace away, the small windows in the door just show darkness. You get closer, and try to tap the door’s touchpad, but it flashes red with the text, “Breach detected. Emergency Airlock closed”.
+When you turn back to the door, you jump back. The window was not just dark- there’s a dark red sheen splattered across it, with branches and leaves packed right behind
+. 
+[[You leave in a hurry.-&gt;Main Hallway Overgrown]]
+</tw-passagedata><tw-passagedata pid="73" name="Engine Room Overgrown" tags="" position="2300,3100" size="100,100">You approach the engine room. The door is already forced ajar, similar to the cargo bay. You slip through the gap and go inside. 
+
+There are plants all over- but a path has been cut through to the main engine. 
+
+Walking up to the engine, it’s working fine. Despite the destructive nature of the plants, it seems the heat and existing fencing stopped the plants from getting very far into the engine room. They choke up the entrance, but the inner part of the room is mostly clear.
+
+Nothing else really grabs your attention here. 
+
+[[Return-&gt;Main Hallway Overgrown]]
+</tw-passagedata><tw-passagedata pid="74" name="Cockpit Overgrown" tags="" position="3050,3100" size="100,100">You approach the cockpit. You tap the touchpad, and you’re greeted with a familiar red flash. You peer through the windows into the cockpit.
+There’s no plants inside- the cockpit doors were almost always locked, so perhaps it was spared from the plants similar to the cargo bay. 
+Scanning the room, there’s nothing particularly wrong… but, you do notice that some things seem to be misplaced. Whenever you helped the pilot in the cockpit, he had a habit of leaving personal things in the cockpit. Looking in now, it seems those things are gone, or at least out of sight. 
+
+
+[[You leave in a hurry.-&gt;Main Hallway Overgrown]]
+</tw-passagedata><tw-passagedata pid="75" name="Take duffel bag" tags="" position="2250,4700" size="100,100">(set: $inventory to $inventory + (a: &quot;DuffelBag&quot;))
+You hoist the bag up to your shoulders, and bring it with you. You hear the engineer calling for you. What do you do?
+
+[[Go to second dorm room]]
+[[Return to main hall-&gt;Main Hallway 3]]
+</tw-passagedata><tw-passagedata pid="76" name="Go to second dorm room" tags="" position="2375,4700" size="100,100">Melted beds and fire prevents you from entering the second dorm room.
+
+	(if: not($inventory contains &quot;DuffelBag&quot;))[[Return-&gt;Inspect duffel bag]] 
+	[[Return to main hall-&gt;Main Hallway 3]] 
+</tw-passagedata><tw-passagedata pid="77" name="Investigate room" tags="" position="2875,4700" size="100,100">You spot the drill sitting on top of a shelf. It’s got plants growing on it. You take it off and inspect it. Why is it here? you wonder. And as soon as that thought pops up in your head, you’re sent down the long run again.
+
+[[...-&gt;Transition 4]]
+</tw-passagedata><tw-passagedata pid="78" name="Transition 4" tags="" position="2800,5050" size="100,100">
+Once again, you’ve been warped back to the cargo bay. This time, a heavy, coppery scent lingers in the air. Everything seems fine, though, and you’re able to unlock the door simply by using the control panel. No one else seems to be on the ship, except…
+
+You see someone lying face up in the center of the main hall, and walk up to them. It’s the medic. You try to get his attention, but it seems like he’s knocked out. What do you do?
+
+[[Smack him]]
+[[Bloodied Medical Bay]]
+
+</tw-passagedata><tw-passagedata pid="79" name="Smack him" tags="" position="2325,5300" size="100,100">You hit him even harder. Still no response.
+
+[[Smack him even more]]
+[[Go to medical bay-&gt;Bloodied Medical Bay]]
+</tw-passagedata><tw-passagedata pid="80" name="Smack him even more" tags="" position="2225,5425" size="100,100">You muster up as much will as you can, take a step back, hoist him up, and unleash a flurry of punches to his body. He twitches a bit. Surprised, you drop him and take a step back. But nothing happens. Just go to the Medbay, please!
+
+[[Go to medical bay-&gt;Bloodied Medical Bay]]
+</tw-passagedata><tw-passagedata pid="81" name="Main Hallway 4" tags="" position="2800,5175" size="100,100">(set: $timesVisitedMainHallway4 to $timesVisitedMainHallway4 + 1)
+(if: $timesVisitedMainHallway4 &lt;= 1) [You scavenge what remains untouched by the blood, and find a box with first aid supplies. You take it back to the main hall to treat the medic, but even after a few hours, he still doesn’t wake up. Perhaps you should document this. ] (else:)[You come back to the main hall. Where do you go?] 
+
+[[Bloodied Dorms]]
+[[Bloodied Green Room]]
+[[Bloodied Mess Hall]]
+[[Bloodied Engine Room]]
+[[Bloodied Cargo Bay]]
+[[Bloodied Medical Bay]]
+</tw-passagedata><tw-passagedata pid="82" name="Bloodied Dorms" tags="" position="2600,5500" size="100,100">You head to the dorms, looking for something to record how difficult it has been to wake the medic up. One of the beds has a camera on top of it–it’s probably the pilot’s, as he’s a photographer.
+
+[[Take the camera]]
+[[Go further into the dorm]]
+</tw-passagedata><tw-passagedata pid="83" name="Bloodied Green Room" tags="" position="2725,5500" size="100,100">You walk into the green room, which doesn’t have the smell of blood. There’s almost no blood at all, actually.
+
+[[Go back to main hall-&gt;Main Hallway 4]]
+</tw-passagedata><tw-passagedata pid="84" name="Bloodied Mess Hall" tags="" position="2850,5500" size="100,100">You decide to head towards the mess hall. Unfortunately, instead of food splattered everywhere, it’s blood.
+
+[[Go back to main hall-&gt;Main Hallway 4]]
+
+</tw-passagedata><tw-passagedata pid="85" name="Bloodied Engine Room" tags="" position="2975,5500" size="100,100">Going to the engine room, you find that everything is intact. There’s no blood in the room, except for a long smear, about a foot wide, across the central generator.
+
+[[Return-&gt;Main Hallway 4]]
+</tw-passagedata><tw-passagedata pid="86" name="Bloodied Cargo Bay" tags="" position="3100,5500" size="100,100">The cargo bay seems to have taken the worst of it for some reason. On top of blood spilling through every plate in the ceiling, there’s also smashed crates. It seems like someone was intent on hitting something.
+
+[[Return-&gt;Main Hallway 4]]
+</tw-passagedata><tw-passagedata pid="87" name="Take the camera" tags="" position="2600,5625" size="100,100">You take the camera. It’s an old model–probably from the early 2000s, but nothing you don’t know how to operate. You click its power button, and the screen flickers on.
+
+[[Photograph the medic]]
+</tw-passagedata><tw-passagedata pid="88" name="Go further into the dorm" tags="" position="2725,5625" size="100,100">Several beds barricade the door. You push at them with all your might, but they don’t budge an inch. It might not be worth your time to move them away.
+
+[[Photograph the medic]]
+</tw-passagedata><tw-passagedata pid="89" name="Photograph the medic" tags="" position="2625,5750" size="100,100">You go to the main hall to take a photo of the medic. The moment your index finger presses down on the button, you’re warped out again.
+
+[[...-&gt;Crashed Cockpit]]
+</tw-passagedata><tw-passagedata pid="90" name="Crashed Cockpit" tags="" position="2625,5875" size="100,100">You endure the sprint once more and are brought to another timeline. However, you’re not in the cargo bay this time. Telemetrics line the walls of this space, and five seats–one all the way at the end, and two sets of pairs–fill the bulk of the area. Somehow, you’ve found yourself inside the cockpit.
+A door behind you slides open, and a gust of compressed air wooshes by you. 
+
+“Hey. What in the world are you doing in here?”
+
+You turn around and see the pilot, menacingly standing in the entryway. The bright lights from the main hall cause his shadow to loom over you. 
+
+[[Explain what happened]]
+[[Say nothing]]
+</tw-passagedata><tw-passagedata pid="91" name="Explain what happened" tags="" position="2575,6000" size="100,100">“I just got here a few seconds ago. I don’t even know how I ended up here.”
+The pilot furrows his brow and frowns. It’s as if he’s just seen magic. 
+“I thought you died! I just saw you moments ago, blood all over you, in the escape pod!”
+
+[[Say you came from a different timeline-&gt;Explain your circumstances]]
+</tw-passagedata><tw-passagedata pid="92" name="Say nothing" tags="" position="2687.5,6000" size="100,100">The pilot gets suspicious of you.
+“I’m the only one with a keycard that can access the cockpit, unless everyone else decides to override it. And there’s no way that can happen, because everyone else is dead. You’re supposed to be dead too. Who are you?”
+
+[[Explain your circumstances]]
+[[Say nothing-&gt;Say nothing 2]] 
+</tw-passagedata><tw-passagedata pid="93" name="Explain your circumstances" tags="" position="2825,6125" size="100,100">You gather your thoughts and try to explain to the pilot. “Woah, calm down! I got warped here. I think I got here from a different timeline.”
+The pilot looks confused. “How did you do that?”
+
+[[Explain the portal gun]]
+</tw-passagedata><tw-passagedata pid="94" name="Explain the portal gun" tags="" position="2825,6250" size="100,100">(if: $saidNothing2) [The pilot lets you go from the wall, and you breathe a sigh of relief.]
+
+“I think it might’ve been the portal gun. You know how we’re carrying tons of equipment, right? One of them’s a portal gun.” You point to the cargo bay.
+“Uh huh…” The pilot nods, trying to understand.
+“When I woke up, I couldn’t find anyone. Eventually I went into the cargo bay, and found it.” You sit down on one of the passenger seats. 
+“I fired it, and I saw a portal open up. So I stepped in the portal, and got brought to this alternate version of reality.”
+He’s not quite convinced, but it feels like he’s going along with what you’re saying, for now. 
+
+[[Try to explain further]]
+</tw-passagedata><tw-passagedata pid="95" name="Say nothing 2" tags="" position="2625,6200" size="100,100">(set: $saidNothing2 to true)
+The pilot gets more aggressive, and pushes you against one of the walls, holding a knife to your neck.
+“One. Last. Chance. I can’t trust anyone, especially when I know that people on this ship are dead.”
+[[Explain the portal gun]]
+[[Say nothing-&gt;Say nothing 3]] 
+</tw-passagedata><tw-passagedata pid="96" name="Say nothing 3" tags="" position="2525,6500" size="100,100">You struggle against his grip, but you’re no match for him. You see the knife close in on you.
+
+[[Retry-&gt;Crashed Cockpit]] (sends player to start of arc 5)
+[[Take the device]]
+</tw-passagedata><tw-passagedata pid="97" name="Bloodied Medical Bay" tags="" position="2475,5500" size="100,100">(set: $timesInBloodiedMedbay to $timesInBloodiedMedbay + 1)
+
+(if: $timesInBloodiedMedbay &lt;= 1)[You see many tools in the bay, but what’s bizarre is that the entire place is covered in blood. Blood dripping from the ceiling… blood oozing from underneath patient beds and cabinets… It’s not a pleasant sight. However, there might be something in the room that could wake the medic.
+
+
+[[Look for treatment-&gt;Main Hallway 4]]]
+(else:)[You go back to the medical bay, but there probably isn’t anything useful now. 
+[[Go back to main hall-&gt;Main Hallway 4]]]
+
+
+</tw-passagedata><tw-passagedata pid="98" name="Try to explain further" tags="" position="2825,6375" size="100,100">You bring him to the cargo bay to try showing him the gun. When you get there, however, the box with the gun is still stashed deep in the bay. There’s not enough time to take out all the containers and find the one with the gun.
+“Look, can you just trust me on this one?”
+The pilot looks like he’s deep in thought. “I think we can confirm or deny your testimony, right here.” He ushers you back to the cockpit.
+
+He picks up a thin board, attached to one of the cockpit walls. “This is the Protocol Directive.” He scrolls down and taps the screen a few times. “It also holds all the information regarding the cargo we’re transporting. So we’ll see if there really is a portal gun in there.”
+You eagerly wait for his response. 
+
+“I guess there really is a portal gun on the ship.” He looks astonished. “I didn’t expect us to be carrying such high value goods. That thing’s worth a fortune and a half.”
+
+[[What else can it do?]]
+[[Take the device]]
+</tw-passagedata><tw-passagedata pid="99" name="What else can it do?" tags="" position="2750,6500" size="100,100">“It’s also a device that holds the logs for all members. The log is maintained by the ship’s system. The ship has sensors in each room that can detect whether someone’s entered or exited the room. It also contains the purpose that each person has for boarding the ship.”
+
+[[Take the device]]
+</tw-passagedata><tw-passagedata pid="100" name="Take the device" tags="" position="2900,6500" size="100,100">You snatch the device from his hands. As you do so, that all-too-familiar feeling envelops you again. Each time you warp, you seem to get just a bit more fatigued.
+
+[[...-&gt;Cockpit 6]]
+</tw-passagedata><tw-passagedata pid="101" name="Cockpit 6" tags="" position="2900,6625" size="100,100">(set: $vial to false, $container to false, $photo to false, $memberLogs to false, $drill to false)
+(set: $choseGardener to false)
+You’re frozen, stuck in time. The next thing you know, you’re brought to the cockpit. And oddly enough, all the other crew members are here. Before you realize, you begin talking. 
+“We need to call a meeting, now.” It appears that you were brought back in time, before the perpetrator destroyed the engine. 
+“There’s someone who’s gonna wreck our engine, and it’s someone in here. I’m sure of it.” Everyone takes a seat.
+
+Who do you accuse?
+[[Gardener]]
+[[Engineer]]
+[[Medic]]
+[[Pilot]]
+</tw-passagedata><tw-passagedata pid="102" name="Gardener" tags="" position="2712.5,6750" size="100,100">(set: $choseGardener to true)
+You shout to your crewmates, saying “It’s the Gardener! They’re gonna kill us all!”
+You hear mumbling and confusion amongst your crewmates. The pilot leans forward in his seat.
+“How do you know?”
+
+
+Pick your evidence:
+(checkbox: bind $vial, &quot;Vial&quot;)
+(checkbox: bind $container, &quot;Container with pads&quot;)
+(checkbox: bind $photo, &quot;Photo of medic&quot;)
+(checkbox: bind $memberLogs, &quot;Member logs&quot;)
+(checkbox: bind $drill, &quot;Drill knowledge&quot;)
+
+[[Continue-&gt;NextPassage]]</tw-passagedata><tw-passagedata pid="103" name="Engineer" tags="" position="2837.5,6750" size="100,100">You shout to your crewmates, saying “It’s the Engineer! They’re gonna kill us all!”
+You hear mumbling and confusion amongst your crewmates. The pilot leans forward in his seat.
+“How do you know?”
+
+
+Pick your evidence:
+(checkbox: bind $vial, &quot;Vial&quot;)
+(checkbox: bind $container, &quot;Container with pads&quot;)
+(checkbox: bind $photo, &quot;Photo of medic&quot;)
+(checkbox: bind $memberLogs, &quot;Member logs&quot;)
+(checkbox: bind $drill, &quot;Drill knowledge&quot;)
+
+[[Continue-&gt;NextPassage]]
+</tw-passagedata><tw-passagedata pid="104" name="Medic" tags="" position="2950,6750" size="100,100">You shout to your crewmates, saying “It’s the Medic! They’re gonna kill us all!”
+You hear mumbling and confusion amongst your crewmates. The pilot leans forward in his seat.
+“How do you know?”
+
+
+Pick your evidence:
+(checkbox: bind $vial, &quot;Vial&quot;)
+(checkbox: bind $container, &quot;Container with pads&quot;)
+(checkbox: bind $photo, &quot;Photo of medic&quot;)
+(checkbox: bind $memberLogs, &quot;Member logs&quot;)
+(checkbox: bind $drill, &quot;Drill knowledge&quot;)
+
+[[Continue-&gt;NextPassage]]
+</tw-passagedata><tw-passagedata pid="105" name="Pilot" tags="" position="3100,6750" size="100,100">You shout to your crewmates, saying “It’s the Pilot! They’re gonna kill us all!”
+You hear mumbling and confusion amongst your crewmates. The pilot leans forward in his seat.
+“How do you know?”
+
+
+Pick your evidence:
+(checkbox: bind $vial, &quot;Vial&quot;)
+(checkbox: bind $container, &quot;Container with pads&quot;)
+(checkbox: bind $photo, &quot;Photo of medic&quot;)
+(checkbox: bind $memberLogs, &quot;Member logs&quot;)
+(checkbox: bind $drill, &quot;Drill knowledge&quot;)
+
+[[Continue-&gt;NextPassage]]
+</tw-passagedata><tw-passagedata pid="106" name="NextPassage" tags="" position="2875,6900" size="100,100">(if: $choseGardener and $vial and $drill and $container and $memberLogs)[Through all of the timelines, you discovered the true culprit. Congratulations.
+(link: &quot;Restart&quot;)[(restart:)]]
+(else:)[“It doesn’t make sense!” The pilot exclaims. “None of the items you have make sense.”
+
+You weren’t able to pinpoint the true culprit. They ended up successfully sabotaging the ship.
+[[Retry-&gt;Cockpit 6]]
+(link: &quot;Restart&quot;)[(restart:)]]
+
+
+
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
