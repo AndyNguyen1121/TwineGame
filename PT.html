@@ -558,7 +558,7 @@ You see someone lying face up in the center of the main hall, and walk up to the
 [[Photograph the medic]]
 </tw-passagedata><tw-passagedata pid="88" name="Go further into the dorm" tags="" position="2725,5625" size="100,100">Several beds barricade the door. You push at them with all your might, but they don’t budge an inch. It might not be worth your time to move them away.
 
-[[Photograph the medic]]
+[[Return-&gt;Bloodied Dorms]]
 </tw-passagedata><tw-passagedata pid="89" name="Photograph the medic" tags="" position="2625,5750" size="100,100">You go to the main hall to take a photo of the medic. The moment your index finger presses down on the button, you’re warped out again.
 
 [[...-&gt;Crashed Cockpit]]
@@ -691,11 +691,13 @@ Pick your evidence:
 (checkbox: bind $drill, &quot;Drill knowledge&quot;)
 
 [[Continue-&gt;NextPassage]]
-</tw-passagedata><tw-passagedata pid="106" name="NextPassage" tags="" position="2875,6900" size="100,100">(if: $choseGardener and $vial and $drill and $container and $memberLogs)[Through all of the timelines, you discovered the true culprit. Congratulations.
+</tw-passagedata><tw-passagedata pid="106" name="NextPassage" tags="" position="2900,6950" size="100,100">(if: $choseGardener and $vial and $drill and $container and $memberLogs and $photo is false)[Through all of the timelines, you discovered the true culprit. Congratulations.
+
 (link: &quot;Restart&quot;)[(restart:)]]
 (else:)[“It doesn’t make sense!” The pilot exclaims. “None of the items you have make sense.”
 
 You weren’t able to pinpoint the true culprit. They ended up successfully sabotaging the ship.
+
 [[Retry-&gt;Cockpit 6]]
 (link: &quot;Restart&quot;)[(restart:)]]
 
