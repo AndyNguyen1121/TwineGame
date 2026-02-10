@@ -298,6 +298,7 @@ The door crashes open, and as it does you hear the crackling and snapping of pla
  
  	(if: $gardenerFirstDialogue ) [ [[Talk to the gardener-&gt;Continue talking]] ](else:) [ [[Ask about the overgrown plants]] ]
  	[[Look around the room-&gt;Continue looking around]]
+    (if: $information contains &quot;Container&quot;)[ [[Steal the container]] ]
 	[[Go back to main hall-&gt;Main Hallway Overgrown]]
 
  ]
@@ -470,9 +471,16 @@ Going to the dorms, you see the rooms all tidy and organized, as they should hav
 </tw-passagedata><tw-passagedata pid="70" name="Try the hot tub" tags="" position="1925,1625" size="100,100">You try turning on the faucet. A few droplets of water just barely make their way out, but no steady stream. Quite unfortunate for you… perhaps you’ll get the chance once everything goes back to normal.
 
 [[Go back to bathroom-&gt;Bathrooms]]
-</tw-passagedata><tw-passagedata pid="71" name="Pick up container" tags="" position="2950,4075" size="100,100">You pick up the container and open it. Inside are five green pads, each with two letters engraved onto them. Almost immediately, the gardener rushes over and yanks it from your hands. Confused, you ask her what’s going on. She replies with a hmph, and goes back to tending the plants. You know that the gardener is quite shy and cautious, so perhaps this was a reasonable reaction to having someone’s belongings messed with. But you’re not going to let her go this time. You sneak behind her, snatch the container, and sprint towards the main hall and lock the door from the outside. Opening the container again, you touch one of the green pads–the one that has what appears to be your initials on it. Almost immediately, the thousand mile sprint begins again.
+</tw-passagedata><tw-passagedata pid="71" name="Pick up container" tags="" position="2975,3975" size="100,100">((set: $information to $information + (a: &quot;Container&quot;))
+You pick up the container and open it. Inside are five green pads, each with two letters engraved onto them. Almost immediately, the gardener rushes over and yanks it from your hands. 
 
- [[...-&gt;Main Hallway 3]]
+“What the-” 
+
+She gives you a stare, and then quickly turns away and goes back to tending the plants. You know that the gardener is quite shy and cautious, so perhaps this was a reasonable reaction to having someone’s belongings messed with.
+
+[[Steal the container]] 
+[[Return-&gt;Green Room Overgrown]]
+
 </tw-passagedata><tw-passagedata pid="72" name="Escape Pod Overgrown" tags="" position="3200,3100" size="100,100">You approach the Escape Pod. From a pace away, the small windows in the door just show darkness. You get closer, and try to tap the door’s touchpad, but it flashes red with the text, “Breach detected. Emergency Airlock closed”.
 When you turn back to the door, you jump back. The window was not just dark- there’s a dark red sheen splattered across it, with branches and leaves packed right behind
 . 
@@ -695,7 +703,14 @@ You weren’t able to pinpoint the true culprit. They ended up successfully sabo
 
 
 
-</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="107" name="Steal the container" tags="" position="2875,4100" size="100,100">(set: $inventory to $inventory + (a: &quot;Containter&quot;))
+You’re not going to let her go this time. You sneak behind her, snatch the container, and sprint towards the main hall and lock the door from the outside. 
+From beyond the door, you hear her call out, “Stop! What are you doing?!” 
+
+Opening the container again, you touch one of the green pads–the one that has what appears to be your initials on it. 
+Almost immediately, the thousand mile sprint begins again
+
+ [[You feel a horrible heat envelop you…-&gt;Main Hallway 3]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
