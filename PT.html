@@ -715,7 +715,7 @@ Pick your evidence:
 (checkbox: bind $drill, &quot;Drill knowledge&quot;)
 
 [[Continue-&gt;NextPassage]]
-</tw-passagedata><tw-passagedata pid="106" name="NextPassage" tags="" position="2900,6950" size="100,100">(if: $choseGardener and $vial and $drill and $container and $memberLogs and $photo is false)[Through all of the timelines, you discovered the true culprit. Congratulations.
+</tw-passagedata><tw-passagedata pid="106" name="NextPassage" tags="" position="2900,6950" size="100,100">(if: $choseGardener and $vial and $drill and $container and $memberLogs and ($photo is false))[Through all of the timelines, you discovered the true culprit. Congratulations.
 
 (link: &quot;Restart&quot;)[(restart:)]]
 (else:)[“It doesn’t make sense!” The pilot exclaims. “None of the items you have make sense.”
@@ -724,9 +724,6 @@ You weren’t able to pinpoint the true culprit. They ended up successfully sabo
 
 [[Retry-&gt;Cockpit 6]]
 (link: &quot;Restart&quot;)[(restart:)]]
-
-
-
 </tw-passagedata><tw-passagedata pid="107" name="Steal the container" tags="" position="2875,4100" size="100,100">(set: $inventory to $inventory + (a: &quot;Containter&quot;))
 You’re not going to let her go this time. You sneak behind her, snatch the container, and sprint towards the main hall and lock the door from the outside. 
 From beyond the door, you hear her call out, “Stop! What are you doing?!” 
