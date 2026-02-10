@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play PT.</tw-noscript></noscript></tw-story>
-<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
+<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
   display: none;
 }
 
@@ -33,6 +33,7 @@ What do you do?
 (set: $timesVisitedOvergrownCargoBay to 0)
 (set: $timesVisitedMainHallway3 to 0)
 (set: $timesVisitedMainHallway4 to 0)
+(set: $timesVisitedCockpit6 to 0)
 
 &lt;!-- Level Variables --&gt;
 (set: $overgrownMainHallwayOpened to false)
@@ -649,11 +650,14 @@ You eagerly wait for his response.
 [[...-&gt;Cockpit 6]]
 </tw-passagedata><tw-passagedata pid="101" name="Cockpit 6" tags="" position="2900,6625" size="100,100">(set: $vial to false, $container to false, $photo to false, $memberLogs to false, $drill to false)
 (set: $choseGardener to false)
+(set: $timesVisitedCockpit6 to $timesVisitedCockpit6 + 1)
 You’re frozen, stuck in time. The next thing you know, you’re brought to the cockpit. And oddly enough, all the other crew members are here. Before you realize, you begin talking. 
 “We need to call a meeting, now.” It appears that you were brought back in time, before the perpetrator destroyed the engine. 
 “There’s someone who’s gonna wreck our engine, and it’s someone in here. I’m sure of it.” Everyone takes a seat.
 
+
 Who do you accuse?
+(if: $timesVisitedCockpit6 &gt;= 3) [Perhaps you should choose someone who works with nature.]
 [[Gardener]]
 [[Engineer]]
 [[Medic]]
@@ -665,6 +669,7 @@ You hear mumbling and confusion amongst your crewmates. The pilot leans forward 
 
 
 Pick your evidence:
+(if: $timesVisitedCockpit6 &gt;= 3) [You might need all but one.]
 (checkbox: bind $vial, &quot;Vial&quot;)
 (checkbox: bind $container, &quot;Container with pads&quot;)
 (checkbox: bind $photo, &quot;Photo of medic&quot;)
