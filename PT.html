@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play PT.</tw-noscript></noscript></tw-story>
-<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
+<tw-storydata name="PT" startnode="1" creator="Twine" creator-version="2.11.1" format="Harlowe" format-version="3.3.9" ifid="9199E157-36B7-42DD-8A9E-52E1FF3315BC" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
   display: none;
 }
 
@@ -41,6 +41,8 @@ What do you do?
 (set: $gardenerFirstDialogue to false)
 (set: $greenHouseItems to 0)
 (set: $saidNothing2 to false)
+(set: $acceptedEngineerQuest to false)
+(set: $engineerQuestCompleted to false)
 
 &lt;!-- Lists --&gt;
 (set: $inventory to (a: ))
@@ -412,10 +414,15 @@ She refuses to look at you. She really doesn’t want to continue talking about 
 
 [[Keep talking-&gt;Continue talking]]
 [[Leave-&gt;Green Room Overgrown]]</tw-passagedata><tw-passagedata pid="58" name="Main Hallway 3" tags="" position="2825,4225" size="100,100">(set: $timesVisitedMainHallway3 to $timesVisitedMainHallway3 + 1)
-(if: $inventory contains &quot;DuffelBag&quot;)[The engineer is standing in the hall. They’re not too happy that you have their duffel bag, but they manage to contain themselves. 
+(if: $inventory contains &quot;DuffelBag&quot; and $engineerQuestCompleted) [You need to find the engineer’s drill. You can see the fires growing in the other rooms. There’s not much time. Where do you go?
+]
+(else-if: $inventory contains &quot;DuffelBag&quot; and $acceptedEngineerQuest)[The engineer is standing in the hall. Their eyes trace down to the bag on your shoulders. 
+
 “I brought your bag. It’s missing the drill as well.”
+
 They ruffle through the bag, and sure enough, no drill.
-Sighing, they ask you, “can you look at the other rooms? I’ll keep working on getting the fire suppression system working.”
+Sighing, they ask you, “can you look at the other rooms? I’ll keep working on getting the fire suppression system working.” Turning back, they head towards the engine room.
+(set: $engineerQuestCompleted to true)
 ]
 (else-if: $timesVisitedMainHallway3 &lt;= 1)[You’re back again, right inside the cargo bay. Heat immediately engulfs your whole body. The door to the main hall lies flat on the ground. You step out of the bay and enter the main hall. Where do you go?] (else: )[You’re in the main hall again. Where do you go?]
 
@@ -448,17 +455,29 @@ Sighing, they ask you, “can you look at the other rooms? I’ll keep working o
 [[Return to main hall-&gt;Main Hallway 3]]</tw-passagedata><tw-passagedata pid="65" name="Ask them about the fires in the main hall" tags="" position="3175,4500" size="100,100">“What fires?” Two seconds later, an ember lands on the floor, right on top of the engineer’s toolbox, causing a fire to immediately start. Both of you scream, and you desperately search for a fire extinguisher. The engineer’s doing nothing to stop the flames besides trying to step on it. You try to get it working, but for some reason, the extinguisher doesn’t want to work. You die, failing to extinguish the fire.
 
 [[Retry-&gt;Main Hallway 3]]
-</tw-passagedata><tw-passagedata pid="66" name="Ask them what they’re doing in the engine room" tags="" position="3300,4500" size="100,100">“Oh, I’m running a routine inspection of the engine. Gotta make sure it’s running in tip-top shape! Been at it for a few hours now, cuz there’s a lot of parts to check for.” They brush off sweat from their brow, and stand up to face you. “Have you seen my drill? I swore it was just in my toolbox a few days ago, but I can’t find it anywhere now.”
+</tw-passagedata><tw-passagedata pid="66" name="Ask them what they’re doing in the engine room" tags="" position="3300,4500" size="100,100">(if: not ($inventory contains &quot;DuffelBag&quot;) or not ( $engineerQuestCompleted))[“Oh, I’m running a routine inspection of the engine. Gotta make sure it’s running in tip-top shape! Been at it for a few hours now, cuz there’s a lot of parts to check for.” They brush off sweat from their brow, and stand up to face you. “Have you seen my drill? I swore it was just in my toolbox a few days ago, but I can’t find it anywhere now.”
 
 [[Offer help to the engineer]]
-[[Refuse to help the engineer]]
-</tw-passagedata><tw-passagedata pid="67" name="Offer help to the engineer" tags="" position="3225,4625" size="100,100">“Thanks.” They ask you to find their duffel bag, which they believe the drill should’ve been returned to. You feel prompted to tell them about the fires outside.
+[[Refuse to help the engineer]] ]
+(else-if: $engineerQuestCompleted)[&quot;I&#39;m still running the inspection. Have you found my drill?&quot;
+
+[[Return-&gt;Main Hallway 3]] ]
+</tw-passagedata><tw-passagedata pid="67" name="Offer help to the engineer" tags="" position="3225,4625" size="100,100">(set: $acceptedEngineerQuest to true)
+(if: $inventory contains &quot;DuffelBag&quot;)[(set: $engineerQuestCompleted to true)“Thanks.” They ask you to find their drill. You hand the duffel bag to them.
+“That’s odd. Where’d you find the bag?” the engineer inquires.
+“In the dorm room, next to the gardener’s bed.” 
+They nod, and look inside the bag. There’s no drill inside, so they ask you to continue the search.
+[[Return to main hall-&gt;Main Hallway 3]]]
+(else-if: not ($inventory contains &quot;DuffelBag&quot;))[ “Thanks.” They ask you to find their duffel bag, which they believe the drill should’ve been returned to. You feel prompted to tell them about the fires outside.
+
 “Not sure if you know or felt something was up, but there are fires spreading in the ship right now.”
+
 “Yeah, I know already. The fire suppression system was supposed to have activated already, but it’s malfunctioning. I’ll check it out.”
 
 Going to the dorms, you see the rooms all tidy and organized, as they should have been. Fortunately, the dorms haven’t caught on fire yet. However, something catches your attention. A duffel bag is lying in the corner of the room.
 
-[[Inspect duffel bag]]
+[[Inspect duffel bag]]]
+(else:) [[Return-&gt;Engine Room 3]]
 </tw-passagedata><tw-passagedata pid="68" name="Refuse to help the engineer" tags="" position="3362.5,4625" size="100,100">They give you a long stare, and go back to taking apart panels and screws.
 
 	[[Offer help to the engineer]]
@@ -501,7 +520,7 @@ Scanning the room, there’s nothing particularly wrong… but, you do notice th
 
 [[You leave in a hurry.-&gt;Main Hallway Overgrown]]
 </tw-passagedata><tw-passagedata pid="75" name="Take duffel bag" tags="" position="2250,4700" size="100,100">(set: $inventory to $inventory + (a: &quot;DuffelBag&quot;))
-You hoist the bag up to your shoulders, and bring it with you. You hear the engineer calling for you. What do you do?
+You hoist the bag up to your shoulders, and bring it with you. (if: $acceptedEngineerQuest)[You hear the engineer calling for you.] What do you do?
 
 [[Go to second dorm room]]
 [[Return to main hall-&gt;Main Hallway 3]]
@@ -518,7 +537,7 @@ Once again, you’ve been warped back to the cargo bay. This time, a heavy, copp
 You see someone lying face up in the center of the main hall, and walk up to them. It’s the medic. You try to get his attention, but it seems like he’s knocked out. What do you do?
 
 [[Smack him]]
-[[Bloodied Medical Bay]]
+[[Go to medical bay-&gt;Bloodied Medical Bay]]
 
 </tw-passagedata><tw-passagedata pid="79" name="Smack him" tags="" position="2325,5300" size="100,100">You hit him even harder. Still no response.
 
@@ -527,6 +546,7 @@ You see someone lying face up in the center of the main hall, and walk up to the
 </tw-passagedata><tw-passagedata pid="80" name="Smack him even more" tags="" position="2225,5425" size="100,100">You muster up as much will as you can, take a step back, hoist him up, and unleash a flurry of punches to his body. He twitches a bit. Surprised, you drop him and take a step back. But nothing happens. Just go to the Medbay, please!
 
 [[Go to medical bay-&gt;Bloodied Medical Bay]]
+[[Continuously smack him]]
 </tw-passagedata><tw-passagedata pid="81" name="Main Hallway 4" tags="" position="2800,5175" size="100,100">(set: $timesVisitedMainHallway4 to $timesVisitedMainHallway4 + 1)
 (if: $timesVisitedMainHallway4 &lt;= 1) [You scavenge what remains untouched by the blood, and find a box with first aid supplies. You take it back to the main hall to treat the medic, but even after a few hours, he still doesn’t wake up. Perhaps you should document this. ] (else:)[You come back to the main hall. Where do you go?] 
 
@@ -710,7 +730,25 @@ From beyond the door, you hear her call out, “Stop! What are you doing?!”
 Opening the container again, you touch one of the green pads–the one that has what appears to be your initials on it. 
 Almost immediately, the thousand mile sprint begins again
 
- [[You feel a horrible heat envelop you…-&gt;Main Hallway 3]]</tw-passagedata></tw-storydata>
+ [[You feel a horrible heat envelop you…-&gt;Main Hallway 3]]</tw-passagedata><tw-passagedata pid="108" name="Continuously smack him" tags="" position="2225,5550" size="100,100">For some reason, you didn’t listen to the narrator. Instead, you go to the cargo bay and search for something that’ll let you punch him nonstop. After a bit of searching, you find a package with the name “Punch-bot 3000”. It seems like whoever ordered it really wanted to improve their boxing skills. You take it out of the package, get it set up and running, and bring it to the main hall.
+
+You look at the medic, and hope they won’t remember that you subjected them to an eternity of punches. You make a makeshift frame from a few chairs to set the robot onto. Its fists face the medic. Boop. The robot boots up, and requests for the punch frequency.
+
+[[Level 1]]
+[[Level 2]]
+[[Level 3]]
+[[Level 99]]
+</tw-passagedata><tw-passagedata pid="109" name="Level 1" tags="" position="2037.5,5675" size="100,100">The robot begins punching slowly. You leave him there.
+No more trolling now. Go to the medbay.
+[[Go to the medical bay-&gt;Bloodied Medical Bay]]
+</tw-passagedata><tw-passagedata pid="110" name="Level 2" tags="" position="2162.5,5675" size="100,100">The robot begins punching moderately quickly. You leave him there.
+No more trolling now. Go to the medbay.
+[[Go to the medical bay-&gt;Bloodied Medical Bay]]</tw-passagedata><tw-passagedata pid="111" name="Level 3" tags="" position="2287.5,5675" size="100,100">The robot begins punching quite fast. You leave him there.
+No more trolling now. Go to the medbay.
+[[Go to the medical bay-&gt;Bloodied Medical Bay]]</tw-passagedata><tw-passagedata pid="112" name="Level 99" tags="" position="2412.5,5675" size="100,100">Its punches have been elevated to the level of gods. With just a one-two combo, it bends and shatters the hull of the ship, piercing it with pure strength. Everything’s being sucked out of the ship, including you. The ensuing vacuum is too strong for you to resist, and you’re pulled into space.
+
+[[Retry-&gt;Transition 4]] 
+</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
