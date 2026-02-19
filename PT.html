@@ -17,32 +17,30 @@
 
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
 window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
+window.gtag = function() {
+    window.dataLayer.push(arguments);
+};
 
 var script1 = document.createElement("script");
 script1.async = true;
 script1.src = "https://www.googletagmanager.com/gtag/js?id=G-LEQRBXY839";
 document.head.appendChild(script1);
 
-gtag('js', new Date());
-
-gtag('config', 'G-LEQRBXY839', {
-  send_page_view: false
+window.gtag('js', new Date());
+window.gtag('config', 'G-LEQRBXY839', {
+    'send_page_view': false 
 });
 
-document.addEventListener("twine:showpassage", function (event) {
-  if (typeof gtag === "function") {
-    gtag("event", "page_view", {
-      page_title: event.detail.name,
-      page_path: "/" + event.detail.name
-    });
+$(document).on('twine:showpassage', function (event) {
+    var passageName = event.originalEvent.detail.name;
+    
+    console.log("Tracking passage: " + passageName); // This helps you see it working in the console
 
-    gtag("event", "passage_view", {
-      passage_name: event.detail.name
+    window.gtag("event", "page_view", {
+        page_title: passageName,
+        page_path: "/" + passageName
     });
-  }
-});
-</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
+});</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
 
 (if: $timesVisitedPod &lt;= 1)[Wake up…
 Wake up.
