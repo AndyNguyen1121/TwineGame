@@ -66,7 +66,9 @@ window.sendDataToGoogle = function() {
       "timesVisitedMainHallway4": harlowe.State.variables['timesVisitedMainHallway4'] || 0,
       "timesVisitedCockpit6": harlowe.State.variables['timesVisitedCockpit6'] || 0,
      "PortalOpen": harlowe.State.variables['PortalOpen'],
-	"metGardener": harlowe.State.variables['metGardener'] 
+	"metGardener": harlowe.State.variables['metGardener'],
+    "totalRoomEntries" : harlowe.State.variables['totalRoomEntries'],
+    "deaths": harlowe.State.variables['deaths']
   });
 
     fetch(googleSheetURL, {
@@ -122,14 +124,16 @@ What do you do?
 &lt;!-- Lists --&gt;
 (set: $inventory to (a: ))
 (set: $information to (a:))
-
+(set: $deaths to 0)
 (set: $totalRoomEntries to 0)
 </tw-passagedata><tw-passagedata pid="3" name="Slide under the metal plate" tags="" position="2325,725" size="100,100">The metal hunk crashes moments later. The sound rings in your ears for a few seconds, and stops. You managed to narrowly escape the predicament.
 
 [[Go to the docking bay-&gt;DockingBay]]
 &lt;script&gt;window.sendDataToGoogle()&lt;/script&gt;</tw-passagedata><tw-passagedata pid="4" name="Do nothing" tags="" position="2150,725" size="100,100">The metal hunk slides right into your body, rupturing your organs and sending them flying.
 
-[[Wake up-&gt;EscapePod]] </tw-passagedata><tw-passagedata pid="5" name="DockingBay" tags="" position="2400,875" size="100,100">(set: $timesVisitedDockingBay to $timesVisitedDockingBay + 1)
+[[Wake up-&gt;EscapePod]] 
+
+(set: $deaths to $deaths + 1)</tw-passagedata><tw-passagedata pid="5" name="DockingBay" tags="" position="2400,875" size="100,100">(set: $timesVisitedDockingBay to $timesVisitedDockingBay + 1)
 
 (if: $timesVisitedDockingBay &lt;= 1)
 [
@@ -534,7 +538,7 @@ Sighing, they ask you, “can you look at the other rooms? I’ll keep working o
 [[Return to main hall-&gt;Main Hallway 3]]</tw-passagedata><tw-passagedata pid="65" name="Ask them about the fires in the main hall" tags="" position="3175,4500" size="100,100">“What fires?” Two seconds later, an ember lands on the floor, right on top of the engineer’s toolbox, causing a fire to immediately start. Both of you scream, and you desperately search for a fire extinguisher. The engineer’s doing nothing to stop the flames besides trying to step on it. You try to get it working, but for some reason, the extinguisher doesn’t want to work. You die, failing to extinguish the fire.
 
 [[Retry-&gt;Main Hallway 3]]
-</tw-passagedata><tw-passagedata pid="66" name="Ask them what they’re doing in the engine room" tags="" position="3300,4500" size="100,100">(if: not ($inventory contains &quot;DuffelBag&quot;) or not ( $engineerQuestCompleted))[“Oh, I’m running a routine inspection of the engine. Gotta make sure it’s running in tip-top shape! Been at it for a few hours now, cuz there’s a lot of parts to check for.” They brush off sweat from their brow, and stand up to face you. “Have you seen my drill? I swore it was just in my toolbox a few days ago, but I can’t find it anywhere now.”
+(set: $deaths to $deaths + 1)</tw-passagedata><tw-passagedata pid="66" name="Ask them what they’re doing in the engine room" tags="" position="3300,4500" size="100,100">(if: not ($inventory contains &quot;DuffelBag&quot;) or not ( $engineerQuestCompleted))[“Oh, I’m running a routine inspection of the engine. Gotta make sure it’s running in tip-top shape! Been at it for a few hours now, cuz there’s a lot of parts to check for.” They brush off sweat from their brow, and stand up to face you. “Have you seen my drill? I swore it was just in my toolbox a few days ago, but I can’t find it anywhere now.”
 
 [[Offer help to the engineer]]
 [[Refuse to help the engineer]] ]
@@ -700,7 +704,8 @@ The pilot gets more aggressive, and pushes you against one of the walls, holding
 [[Say nothing-&gt;Say nothing 3]] 
 </tw-passagedata><tw-passagedata pid="96" name="Say nothing 3" tags="" position="2525,6500" size="100,100">You struggle against his grip, but you’re no match for him. You see the knife close in on you.
 
-[[Retry-&gt;Crashed Cockpit]] </tw-passagedata><tw-passagedata pid="97" name="Bloodied Medical Bay" tags="" position="2475,5500" size="100,100">(set: $timesInBloodiedMedbay to $timesInBloodiedMedbay + 1)
+[[Retry-&gt;Crashed Cockpit]] 
+(set: $deaths to $deaths + 1)</tw-passagedata><tw-passagedata pid="97" name="Bloodied Medical Bay" tags="" position="2475,5500" size="100,100">(set: $timesInBloodiedMedbay to $timesInBloodiedMedbay + 1)
 
 (if: $timesInBloodiedMedbay &lt;= 1)[You see many tools in the bay, but what’s bizarre is that the entire place is covered in blood. Blood dripping from the ceiling… blood oozing from underneath patient beds and cabinets… It’s not a pleasant sight. However, there might be something in the room that could wake the medic.
 
@@ -817,17 +822,18 @@ You look at the medic, and hope they won’t remember that you subjected them to
 [[Level 2]]
 [[Level 3]]
 [[Level 99]]
-</tw-passagedata><tw-passagedata pid="109" name="Level 1" tags="" position="2037.5,5675" size="100,100">The robot begins punching slowly. You leave him there.
+</tw-passagedata><tw-passagedata pid="109" name="Level 1" tags="" position="2025,5675" size="100,100">The robot begins punching slowly. You leave him there.
 No more trolling now. Go to the medbay.
 [[Go to the medical bay-&gt;Bloodied Medical Bay]]
 </tw-passagedata><tw-passagedata pid="110" name="Level 2" tags="" position="2162.5,5675" size="100,100">The robot begins punching moderately quickly. You leave him there.
 No more trolling now. Go to the medbay.
-[[Go to the medical bay-&gt;Bloodied Medical Bay]]</tw-passagedata><tw-passagedata pid="111" name="Level 3" tags="" position="2300,5675" size="100,100">The robot begins punching quite fast. You leave him there.
+[[Go to the medical bay-&gt;Bloodied Medical Bay]]
+</tw-passagedata><tw-passagedata pid="111" name="Level 3" tags="" position="2300,5675" size="100,100">The robot begins punching quite fast. You leave him there.
 No more trolling now. Go to the medbay.
-[[Go to the medical bay-&gt;Bloodied Medical Bay]]</tw-passagedata><tw-passagedata pid="112" name="Level 99" tags="" position="2412.5,5675" size="100,100">Its punches have been elevated to the level of gods. With just a one-two combo, it bends and shatters the hull of the ship, piercing it with pure strength. Everything’s being sucked out of the ship, including you. The ensuing vacuum is too strong for you to resist, and you’re pulled into space.
+</tw-passagedata><tw-passagedata pid="112" name="Level 99" tags="" position="2412.5,5675" size="100,100">Its punches have been elevated to the level of gods. With just a one-two combo, it bends and shatters the hull of the ship, piercing it with pure strength. Everything’s being sucked out of the ship, including you. The ensuing vacuum is too strong for you to resist, and you’re pulled into space.
 
 [[Retry-&gt;Transition 4]] 
-</tw-passagedata><tw-passagedata pid="113" name="Untitled Passage" tags="header" position="2325,350" size="100,100">{
+(set: $deaths to $deaths + 1)</tw-passagedata><tw-passagedata pid="113" name="Untitled Passage" tags="header" position="2325,350" size="100,100">{
 (set: $totalRoomEntries to (it + 1))
 &lt;script&gt;
     // Pass the Harlowe variable and current passage name to our JS function
