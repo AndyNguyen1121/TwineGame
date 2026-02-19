@@ -13,7 +13,20 @@
   display: none;
 }
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEQRBXY839"></script>
+
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LEQRBXY839');
+
+$(document).on(':passageend', function(event) {
+  gtag('event', 'passage_view', {
+    'event_category': 'Twine',
+    'event_label': event.passage.name
+  });
+});</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
 
 (if: $timesVisitedPod &lt;= 1)[Wake up…
 Wake up.
@@ -749,7 +762,7 @@ No more trolling now. Go to the medbay.
 [[Go to the medical bay-&gt;Bloodied Medical Bay]]</tw-passagedata><tw-passagedata pid="112" name="Level 99" tags="" position="2412.5,5675" size="100,100">Its punches have been elevated to the level of gods. With just a one-two combo, it bends and shatters the hull of the ship, piercing it with pure strength. Everything’s being sucked out of the ship, including you. The ensuing vacuum is too strong for you to resist, and you’re pulled into space.
 
 [[Retry-&gt;Transition 4]] 
-</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="113" name="Untitled Passage" tags="" position="2325,350" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
