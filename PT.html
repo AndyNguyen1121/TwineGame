@@ -24,7 +24,15 @@ script1.src = "https://www.googletagmanager.com/gtag/js?id=G-LEQRBXY839";
 document.head.appendChild(script1);
 
 gtag('js', new Date());
-gtag('config', 'G-LEQRBXY839');</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
+gtag('config', 'G-LEQRBXY839');
+
+document.addEventListener("twine:showpassage", function (event) {
+  if (typeof gtag === "function") {
+    gtag("event", "passage_view", {
+      passage_name: event.detail.passage.name
+    });
+  }
+});</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
 
 (if: $timesVisitedPod &lt;= 1)[Wake up…
 Wake up.
