@@ -67,8 +67,8 @@ window.sendDataToGoogle = function() {
       "timesVisitedCockpit6": harlowe.State.variables['timesVisitedCockpit6'] || 0,
      "PortalOpen": harlowe.State.variables['PortalOpen'],
 	"metGardener": harlowe.State.variables['metGardener'],
-    "totalRoomEntries" : harlowe.State.variables['totalRoomEntries'],
-    "deaths": harlowe.State.variables['deaths']
+    "totalRoomEntries" : harlowe.State.variables['totalRoomEntries'] || 0,
+    "deaths": harlowe.State.variables['deaths'] || 0
   });
 
     fetch(googleSheetURL, {
