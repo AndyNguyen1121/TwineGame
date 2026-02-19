@@ -63,8 +63,8 @@ window.sendDataToGoogle = function() {
       "timesVisitedMainHallway3": harlowe.State.variables['timesVisitedMainHallway3'] || 0,
       "timesVisitedMainHallway4": harlowe.State.variables['timesVisitedMainHallway4'] || 0,
       "timesVisitedCockpit6": harlowe.State.variables['timesVisitedCockpit6'] || 0,
-     "PortalOpen": (harlowe.State.variables['PortalOpen'] !== undefined) ? harlowe.State.variables['PortalOpen'] : false,
-"metGardener": (harlowe.State.variables['metGardener'] !== undefined) ? harlowe.State.variables['metGardener'] : false
+     "PortalOpen": (harlowe.State.variables['PortalOpen'],
+	"metGardener": (harlowe.State.variables['metGardener'] 
   });
 
     fetch(googleSheetURL, {
