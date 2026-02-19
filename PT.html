@@ -58,6 +58,7 @@ window.sendDataToGoogle = function() {
   // and the respective name in the google sheet at the start
   var sendData = JSON.stringify({
       "session_id": sessionId,
+    "timesVisitedPod": harlowe.State.variables['timesVisitedPod'] || 0,
       "timesVisitedDockingBay": harlowe.State.variables['timesVisitedDockingBay'] || 0,
       "timesVisitedMainHallway": harlowe.State.variables['timesVisitedMainHallway'] || 0,
       "timesVisitedMainHallway3": harlowe.State.variables['timesVisitedMainHallway3'] || 0,
