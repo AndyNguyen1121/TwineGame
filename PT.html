@@ -57,7 +57,9 @@ What do you do?
 
 You find a shiny coin on the ground!
 
-|goldButton&gt;[ [[Pick up the gold]] ]
+|goldButton&gt;[
+    (link:&quot;+1 Gold&quot;)[You gained gold!]
+]
 
 (set: $gold to 0)
 Current Gold: &lt;span id=&quot;gold-display&quot;&gt;$gold&lt;/span&gt;
