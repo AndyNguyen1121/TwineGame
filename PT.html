@@ -15,7 +15,7 @@
 
 
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">// Global site tag (gtag.js) - Google Analytics
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">// Load GA4 library
 var script = document.createElement('script');
 script.src = "https://www.googletagmanager.com/gtag/js?id=G-LEQRBXY839";
 script.async = true;
@@ -23,9 +23,22 @@ document.head.appendChild(script);
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
 gtag('js', new Date());
 
-gtag('config', 'G-LEQRBXY839');</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
+// Initialize GA4
+gtag('config', 'G-LEQRBXY839', {
+  'send_page_view': false // We will handle "page views" (passages) manually
+});
+
+// Create a global function we can call from Harlowe
+window.trackRoomEntry = function(passageName, totalCount) {
+  gtag('event', 'room_entry', {
+    'room_name': passageName,
+    'total_entries': totalCount
+  });
+};</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">
+(set: $timesVisitedPod to $timesVisitedPod + 1)
 
 (if: $timesVisitedPod &lt;= 1)[Wake up…
 Wake up.
@@ -35,8 +48,6 @@ Slowly, you open your eyes and see a gigantic red hunk of metal sliding towards 
 A ghostly pain subsides.
 Your eyes snap open, and you see a gigantic red hunk of metal sliding towards you at an alarming speed.]
 What do you do?
-
-[(link: &quot;Pick up the Gold&quot;)[(set: $hasGold to true)(goto: &quot;Next Passage&quot;)]]&lt;gold|
 
 [[Slide under the metal plate]] 
 [[Do Nothing-&gt;Do nothing]] 
@@ -62,7 +73,8 @@ What do you do?
 &lt;!-- Lists --&gt;
 (set: $inventory to (a: ))
 (set: $information to (a:))
-</tw-passagedata><tw-passagedata pid="3" name="Slide under the metal plate" tags="" position="2325,725" size="100,100">The metal hunk crashes moments later. The sound rings in your ears for a few seconds, and stops. You managed to narrowly escape the predicament.
+
+(set: $totalRoomEntries to 0)</tw-passagedata><tw-passagedata pid="3" name="Slide under the metal plate" tags="" position="2325,725" size="100,100">The metal hunk crashes moments later. The sound rings in your ears for a few seconds, and stops. You managed to narrowly escape the predicament.
 
 [[Go to the docking bay-&gt;DockingBay]]</tw-passagedata><tw-passagedata pid="4" name="Do nothing" tags="" position="2150,725" size="100,100">The metal hunk slides right into your body, rupturing your organs and sending them flying.
 
@@ -763,20 +775,16 @@ No more trolling now. Go to the medbay.
 [[Go to the medical bay-&gt;Bloodied Medical Bay]]</tw-passagedata><tw-passagedata pid="112" name="Level 99" tags="" position="2412.5,5675" size="100,100">Its punches have been elevated to the level of gods. With just a one-two combo, it bends and shatters the hull of the ship, piercing it with pure strength. Everything’s being sucked out of the ship, including you. The ensuing vacuum is too strong for you to resist, and you’re pulled into space.
 
 [[Retry-&gt;Transition 4]] 
-</tw-passagedata><tw-passagedata pid="113" name="Untitled Passage" tags="header" position="2325,350" size="100,100">&lt;script&gt;
-    if (typeof gtag === &#39;function&#39;) {
-        // Log the data to your browser console first
-        console.log(&quot;GA4 Tracking: &quot; + window.Harlowe.passage.name);
-
-        // Then send it to Google
-        gtag(&#39;event&#39;, &#39;page_view&#39;, {
-            page_title: window.Harlowe.passage.name,
-            page_location: window.location.href
-        });
-    } else {
-        console.warn(&quot;GA4 Warning: gtag is not defined. Tracking failed.&quot;);
-    }
-&lt;/script&gt;</tw-passagedata><tw-passagedata pid="114" name="Pick up the gold" tags="" position="2450,725" size="100,100">fsdca</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="113" name="Untitled Passage" tags="header" position="2325,350" size="100,100">{
+(set: $totalRoomEntries to (it + 1))
+&lt;script&gt;
+    // Pass the Harlowe variable and current passage name to our JS function
+    trackRoomEntry(
+        /* Current Room Name */ &quot;(passage:)&#39;s name&quot;, 
+        /* Total Count */ $totalRoomEntries
+    );
+&lt;/script&gt;
+}</tw-passagedata><tw-passagedata pid="114" name="Pick up the gold" tags="" position="2450,725" size="100,100">fsdca</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
