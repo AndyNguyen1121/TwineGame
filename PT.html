@@ -15,17 +15,17 @@
 
 
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">window.dataLayer = window.dataLayer || [];
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">var script1 = document.createElement("script");
+script1.async = true;
+script1.src = "https://www.googletagmanager.com/gtag/js?id=G-LEQRBXY839";
+document.head.appendChild(script1);
+
+window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-LEQRBXY839');
-
-$(document).on(':passageend', function(event) {
-  gtag('event', 'passage_view', {
-    'event_category': 'Twine',
-    'event_label': event.passage.name
-  });
-});</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
+;
+</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
 
 (if: $timesVisitedPod &lt;= 1)[Wake up…
 Wake up.
