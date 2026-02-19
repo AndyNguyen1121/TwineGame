@@ -31,31 +31,19 @@ window.gtag('config', 'G-LEQRBXY839', {
     'send_page_view': false 
 });
 
-$(document).on('twine:showpassage', function (event) {
-    var passageName = event.originalEvent.detail.name;
-    
-    console.log("Tracking passage: " + passageName); // This helps you see it working in the console
-
-    window.gtag("event", "page_view", {
-        page_title: passageName,
-        page_path: "/" + passageName
-    });
-});
 
 $(document).on('click', 'tw-hook[name="goldButton"]', function() {
-    // 1. Send the data to Google Analytics
+    console.log("Console Check: Gold Hook Clicked!"); // This SHOULD show up now
+
     if (window.gtag) {
         window.gtag('event', 'earn_gold', {
             'value': 1,
-            'currency': 'GLD' // GA4 likes a currency code, even if fake
+            'currency': 'GLD'
         });
-        console.log("GA4: Sent +1 Gold event.");
+        console.log("GA4: Sent +1 Gold event to Google.");
+    } else {
+        console.warn("GA4: gtag is not defined. Check your internet or ad-blocker.");
     }
-
-    // 2. Simple visual feedback (Optional)
-    // This just updates the number on the screen for the player
-    var currentGold = parseInt($('#gold-display').text());
-    $('#gold-display').text(currentGold + 1);
 });</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
 
 (if: $timesVisitedPod &lt;= 1)[Wake up…
