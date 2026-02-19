@@ -64,6 +64,7 @@ window.sendDataToGoogle = function() {
 
     fetch(googleSheetURL, {
         method: "POST",
+      mode: "no-cors",
         body: sendData
     })
 };
@@ -115,6 +116,8 @@ What do you do?
 &lt;!-- Lists --&gt;
 (set: $inventory to (a: ))
 (set: $information to (a:))
+
+(set: $totalRoomEntries to 0)
 </tw-passagedata><tw-passagedata pid="3" name="Slide under the metal plate" tags="" position="2325,725" size="100,100">The metal hunk crashes moments later. The sound rings in your ears for a few seconds, and stops. You managed to narrowly escape the predicament.
 
 [[Go to the docking bay-&gt;DockingBay]]
