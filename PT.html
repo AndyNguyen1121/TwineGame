@@ -32,9 +32,23 @@ window.gtag('config', 'G-LEQRBXY839', {
 });
 
 
-$(document).on('click', 'tw-hook', function() {
-    console.log("A hook was clicked.");
-});</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
+document.addEventListener("click", function(event) {
+    const hook = event.target.closest('tw-hook[name="goldButton"]');
+    if (!hook) return;
+
+    console.log("Console Check: Gold Hook Clicked!");
+
+    if (typeof gtag === "function") {
+        gtag('event', 'earn_gold', {
+            value: 1,
+            currency: 'GLD'
+        });
+        console.log("GA4: Sent +1 Gold event.");
+    } else {
+        console.warn("GA4: gtag not defined.");
+    }
+});
+</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
 
 (if: $timesVisitedPod &lt;= 1)[Wake up…
 Wake up.
