@@ -58,8 +58,14 @@ window.sendDataToGoogle = function() {
   // and the respective name in the google sheet at the start
   var sendData = JSON.stringify({
       "session_id": sessionId, // session id is optional
-      "total_room1": harlowe.State.variables['totalRoomEntries'], 
-      "total_room2": harlowe.State.variables['totalRoomEntries']
+      "timesVisitedPod": harlowe.State.variables['timesVisitedPod'], 
+      "timesVisitedDockingBay": harlowe.State.variables['timesVisitedDockingBay'],
+    "timesVisitedMainHallway": harlowe.State.variables['timesVisitedMainHallway'],
+    "timesVisitedMainHallway3": harlowe.State.variables['timesVisitedMainHallway3'],
+    "timesVisitedMainHallway4": harlowe.State.variables['timesVisitedMainHallway4'],
+    "timesVisitedCockpit6": harlowe.State.variables['timesVisitedCockpit6'],
+    "PortalOpen": harlowe.State.variables['PortalOpen'],
+    "metGardener": harlowe.State.variables['metGardener']
       });
 
     fetch(googleSheetURL, {
@@ -95,7 +101,7 @@ What do you do?
 [[Do Nothing-&gt;Do nothing]] 
 </tw-passagedata><tw-passagedata pid="2" name="Startup" tags="startup" position="2325,475" size="100,100">&lt;!-- Data --&gt;
 (set: $timesVisitedPod to 0)
-(set: $timesVisitedDockingPay to 0)
+(set: $timesVisitedDockingBay to 0)
 (set: $timesVisitedMainHallway to 0)
 (set: $timesVisitedOvergrownCargoBay to 0)
 (set: $timesVisitedMainHallway3 to 0)
@@ -794,7 +800,7 @@ You weren’t able to pinpoint the true culprit. They ended up successfully sabo
 
 [[Retry-&gt;Cockpit 6]]
 (link: &quot;Restart&quot;)[(restart:)]]
-</tw-passagedata><tw-passagedata pid="107" name="Steal the container" tags="" position="2875,4100" size="100,100">(set: $inventory to $inventory + (a: &quot;Containter&quot;))
+&lt;script&gt;window.sendDataToGoogle()&lt;/script&gt;</tw-passagedata><tw-passagedata pid="107" name="Steal the container" tags="" position="2875,4100" size="100,100">(set: $inventory to $inventory + (a: &quot;Containter&quot;))
 You’re not going to let her go this time. You sneak behind her, snatch the container, and sprint towards the main hall and lock the door from the outside. 
 From beyond the door, you hear her call out, “Stop! What are you doing?!” 
 
