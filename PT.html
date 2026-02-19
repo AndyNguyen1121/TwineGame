@@ -32,18 +32,8 @@ window.gtag('config', 'G-LEQRBXY839', {
 });
 
 
-$(document).on('click', 'tw-hook[name="goldButton"]', function() {
-    console.log("Console Check: Gold Hook Clicked!"); // This SHOULD show up now
-
-    if (window.gtag) {
-        window.gtag('event', 'earn_gold', {
-            'value': 1,
-            'currency': 'GLD'
-        });
-        console.log("GA4: Sent +1 Gold event to Google.");
-    } else {
-        console.warn("GA4: gtag is not defined. Check your internet or ad-blocker.");
-    }
+$(document).on('click', 'tw-hook', function() {
+    console.log("A hook was clicked.");
 });</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
 
 (if: $timesVisitedPod &lt;= 1)[Wake up…
