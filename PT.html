@@ -40,6 +40,22 @@ $(document).on('twine:showpassage', function (event) {
         page_title: passageName,
         page_path: "/" + passageName
     });
+});
+
+$(document).on('click', 'tw-hook[name="goldButton"]', function() {
+    // 1. Send the data to Google Analytics
+    if (window.gtag) {
+        window.gtag('event', 'earn_gold', {
+            'value': 1,
+            'currency': 'GLD' // GA4 likes a currency code, even if fake
+        });
+        console.log("GA4: Sent +1 Gold event.");
+    }
+
+    // 2. Simple visual feedback (Optional)
+    // This just updates the number on the screen for the player
+    var currentGold = parseInt($('#gold-display').text());
+    $('#gold-display').text(currentGold + 1);
 });</script><tw-tag name="Startup" color="orange"></tw-tag><tw-tag name="startup" color="yellow"></tw-tag><tw-tag name="header" color="blue"></tw-tag><tw-passagedata pid="1" name="EscapePod" tags="" position="2325,600" size="100,100">(set: $timesVisitedPod to $timesVisitedPod + 1)
 
 (if: $timesVisitedPod &lt;= 1)[Wake up…
@@ -50,6 +66,13 @@ Slowly, you open your eyes and see a gigantic red hunk of metal sliding towards 
 A ghostly pain subsides.
 Your eyes snap open, and you see a gigantic red hunk of metal sliding towards you at an alarming speed.]
 What do you do?
+
+You find a shiny coin on the ground!
+
+|goldButton&gt;[[Pick up the gold]]
+
+(set: $gold to 0)
+Current Gold: &lt;span id=&quot;gold-display&quot;&gt;$gold&lt;/span&gt;
 
 [[Slide under the metal plate]] 
 [[Do Nothing-&gt;Do nothing]] 
@@ -776,7 +799,7 @@ No more trolling now. Go to the medbay.
 [[Go to the medical bay-&gt;Bloodied Medical Bay]]</tw-passagedata><tw-passagedata pid="112" name="Level 99" tags="" position="2412.5,5675" size="100,100">Its punches have been elevated to the level of gods. With just a one-two combo, it bends and shatters the hull of the ship, piercing it with pure strength. Everything’s being sucked out of the ship, including you. The ensuing vacuum is too strong for you to resist, and you’re pulled into space.
 
 [[Retry-&gt;Transition 4]] 
-</tw-passagedata><tw-passagedata pid="113" name="Untitled Passage" tags="header" position="2325,350" size="100,100"></tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="113" name="Untitled Passage" tags="header" position="2325,350" size="100,100"></tw-passagedata><tw-passagedata pid="114" name="Pick up the gold" tags="" position="2450,725" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
